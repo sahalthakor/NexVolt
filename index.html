@@ -7,8 +7,8 @@
     <title>NexVolt Technologies | High-End Web Development</title>
     <meta name="description" content="Futuristic web development, 3D experiences, and digital architecture.">
 
-    <!-- Tab Icon (Favicon) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <!-- Tab Icon (Favicon) - Fixed: Uses geometric paths instead of text to ensure visibility -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a12'/%3E%3Cpath d='M35 35 L20 50 L35 65 M65 35 L80 50 L65 65 M45 75 L55 25' stroke='%2300f2ff' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
 
     <!-- Google Fonts: Orbitron (Futuristic) and Rajdhani (Technical) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -148,6 +148,16 @@
             box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
             transform: translateY(-10px);
         }
+        /* Pricing Card Specifics */
+        
+        .pricing-card.popular {
+            border-color: #bc13fe;
+            box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
+        }
+        
+        .pricing-card.popular:hover {
+            box-shadow: 0 0 40px rgba(188, 19, 254, 0.4);
+        }
         /* Typography Glow */
         
         .text-glow {
@@ -218,8 +228,9 @@
         <div class="relative w-24 h-24 mb-6">
             <div class="absolute inset-0 border-t-4 border-nex-primary rounded-full animate-spin"></div>
             <div class="absolute inset-2 border-r-4 border-nex-secondary rounded-full animate-spin-reverse"></div>
-            <div class="absolute inset-0 flex items-center justify-center font-display font-bold text-white tracking-widest animate-pulse">
-                NV
+            <!-- Code Icon -->
+            <div class="absolute inset-0 flex items-center justify-center animate-pulse">
+                <i class="fa-solid fa-code text-3xl text-white"></i>
             </div>
         </div>
         <div class="text-nex-primary font-display tracking-[0.5em] text-sm animate-pulse">INITIALIZING...</div>
@@ -252,7 +263,7 @@
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#about" class="text-gray-300 hover:text-nex-primary transition-colors text-lg tracking-wide uppercase font-semibold">About</a>
                 <a href="#solutions" class="text-gray-300 hover:text-nex-primary transition-colors text-lg tracking-wide uppercase font-semibold">Services</a>
-                <a href="#innovation" class="text-gray-300 hover:text-nex-primary transition-colors text-lg tracking-wide uppercase font-semibold">Tech</a>
+                <a href="#pricing" class="text-gray-300 hover:text-nex-primary transition-colors text-lg tracking-wide uppercase font-semibold">Pricing</a>
                 <a href="#contact" class="px-6 py-2 border border-nex-primary text-nex-primary hover:bg-nex-primary hover:text-nex-black transition-all duration-300 font-display font-bold uppercase tracking-wider clip-path-slant btn-cyber">
                     Start Project
                 </a>
@@ -269,13 +280,13 @@
             <div class="flex flex-col p-6 space-y-4">
                 <a href="#about" class="text-white hover:text-nex-primary">About</a>
                 <a href="#solutions" class="text-white hover:text-nex-primary">Services</a>
-                <a href="#innovation" class="text-white hover:text-nex-primary">Tech</a>
+                <a href="#pricing" class="text-white hover:text-nex-primary">Pricing</a>
                 <a href="#contact" class="text-nex-primary font-bold">Start Project</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section (Increased top padding to pt-32) -->
+    <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center pt-32 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-nex-black z-0 pointer-events-none"></div>
 
@@ -292,10 +303,18 @@
                 We craft high-performance websites, immersive 3D experiences, and scalable web architectures for the brands of tomorrow.
             </p>
 
+            <!-- Pay After Tagline -->
+            <div class="mb-10 reveal" style="transition-delay: 250ms;">
+                <span class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 font-display text-sm tracking-wider uppercase">
+                    <i class="fa-solid fa-shield-check"></i>
+                    Trust Protocol: Pay Only After Project Completion
+                </span>
+            </div>
+
             <div class="flex flex-col md:flex-row justify-center gap-6 reveal" style="transition-delay: 300ms;">
-                <a href="#solutions" class="group relative px-8 py-4 bg-nex-primary text-nex-black font-display font-bold text-lg uppercase tracking-wider hover:shadow-[0_0_40px_rgba(0,242,255,0.6)] transition-all duration-300 btn-cyber">
-                    View Services
-                    <i class="fa-solid fa-layer-group ml-2 group-hover:translate-x-1 transition-transform"></i>
+                <a href="#pricing" class="group relative px-8 py-4 bg-nex-primary text-nex-black font-display font-bold text-lg uppercase tracking-wider hover:shadow-[0_0_40px_rgba(0,242,255,0.6)] transition-all duration-300 btn-cyber">
+                    View Pricing
+                    <i class="fa-solid fa-tag ml-2 group-hover:translate-x-1 transition-transform"></i>
                 </a>
                 <a href="#contact" class="px-8 py-4 border border-white/20 hover:border-nex-secondary text-white font-display font-bold text-lg uppercase tracking-wider hover:bg-nex-secondary/10 transition-all duration-300">
                     Hire Us
@@ -313,20 +332,20 @@
     <section class="py-12 border-y border-white/5 bg-nex-black/50 backdrop-blur-sm">
         <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div class="text-center reveal">
-                <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2 counter" data-target="99">0</h3>
-                <p class="text-nex-primary uppercase tracking-widest text-sm">Performance Score</p>
+                <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2"><span class="counter" data-target="100">0</span>%</h3>
+                <p class="text-nex-primary uppercase tracking-widest text-sm">Optimization</p>
             </div>
             <div class="text-center reveal" style="transition-delay: 100ms;">
-                <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2 counter" data-target="150">0</h3>
-                <p class="text-nex-primary uppercase tracking-widest text-sm">Projects Deployed</p>
+                <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2"><span class="counter" data-target="24">0</span>/7</h3>
+                <p class="text-nex-primary uppercase tracking-widest text-sm">Digital Support</p>
             </div>
             <div class="text-center reveal" style="transition-delay: 200ms;">
-                <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2 counter" data-target="12">0</h3>
-                <p class="text-nex-primary uppercase tracking-widest text-sm">Global Clients</p>
+                <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2"><span class="counter" data-target="360">0</span>&deg;</h3>
+                <p class="text-nex-primary uppercase tracking-widest text-sm">Creative Vision</p>
             </div>
             <div class="text-center reveal" style="transition-delay: 300ms;">
-                <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2"><span class="counter" data-target="24">0</span>/7</h3>
-                <p class="text-nex-primary uppercase tracking-widest text-sm">Support</p>
+                <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2"><span class="counter" data-target="100">0</span>%</h3>
+                <p class="text-nex-primary uppercase tracking-widest text-sm">Secure Code</p>
             </div>
         </div>
     </section>
@@ -421,7 +440,74 @@
         </div>
     </section>
 
-    <!-- Innovation / Parallax Section -->
+    <!-- Pricing Section (REVISED for Complexity) -->
+    <section id="pricing" class="py-24 relative grid-bg">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-6xl font-display font-bold text-white mb-4">Adaptive <span class="text-transparent bg-clip-text bg-gradient-to-r from-nex-primary to-nex-secondary">Pricing</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">We don't sell generic boxes. We build custom engines. Cost scales directly with complexity, interactivity, and intelligence.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tier 1 -->
+                <div class="glass-card p-8 rounded-xl relative group reveal flex flex-col pricing-card">
+                    <h3 class="text-xl font-display font-bold text-gray-300 mb-2">Level 1: Core</h3>
+                    <div class="text-xl font-body text-nex-primary mb-6">Starting Baseline</div>
+                    <p class="text-gray-400 text-sm mb-6 flex-grow">Essential, high-performance architecture. Best for brands needing a fast, secure, and beautiful digital presence.</p>
+
+                    <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> Responsive Static UI</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> SEO Optimization</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> Fast Loading Speed</li>
+                    </ul>
+
+                    <div class="mt-auto border-t border-white/10 pt-4">
+                        <p class="text-xs text-gray-500 mb-2">Cost Factor: Low</p>
+                        <a href="#contact" class="w-full block py-3 border border-gray-600 hover:border-nex-primary text-center text-white font-bold uppercase text-sm hover:bg-nex-primary hover:text-black transition-all">Request Quote</a>
+                    </div>
+                </div>
+
+                <!-- Tier 2 -->
+                <div class="glass-card p-8 rounded-xl relative group reveal flex flex-col pricing-card popular transform md:-translate-y-4 bg-gradient-to-b from-nex-secondary/10 to-transparent">
+                    <div class="absolute top-0 right-0 bg-nex-secondary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">ADVANCED</div>
+                    <h3 class="text-xl font-display font-bold text-nex-secondary mb-2">Level 2: Dynamic</h3>
+                    <div class="text-xl font-body text-nex-secondary mb-6">Interactive Scale</div>
+                    <p class="text-gray-400 text-sm mb-6 flex-grow">Data-driven applications with Content Management Systems (CMS) and fluid user interactions.</p>
+
+                    <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-secondary mr-2"></i> CMS / Database Integration</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-secondary mr-2"></i> User Logins & Dashboards</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-secondary mr-2"></i> Advanced Animations</li>
+                    </ul>
+
+                    <div class="mt-auto border-t border-white/10 pt-4">
+                        <p class="text-xs text-gray-500 mb-2">Cost Factor: Medium</p>
+                        <a href="#contact" class="w-full block py-3 bg-nex-secondary text-center text-white font-bold uppercase text-sm hover:shadow-[0_0_20px_rgba(188,19,254,0.5)] transition-all">Request Quote</a>
+                    </div>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="glass-card p-8 rounded-xl relative group reveal flex flex-col pricing-card">
+                    <h3 class="text-xl font-display font-bold text-nex-primary mb-2">Level 3: Futuristic</h3>
+                    <div class="text-xl font-body text-nex-primary mb-6">Immersive Scale</div>
+                    <p class="text-gray-400 text-sm mb-6 flex-grow">The bleeding edge. 3D WebGL environments, AI-powered logic, and complex SaaS infrastructure.</p>
+
+                    <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> 3D / WebGL Experience</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> AI & Machine Learning</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> Complex Enterprise Logic</li>
+                    </ul>
+
+                    <div class="mt-auto border-t border-white/10 pt-4">
+                        <p class="text-xs text-gray-500 mb-2">Cost Factor: High</p>
+                        <a href="#contact" class="w-full block py-3 border border-gray-600 hover:border-nex-primary text-center text-white font-bold uppercase text-sm hover:bg-nex-primary hover:text-black transition-all">Request Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation / Parallax Section - Attraction CTA -->
     <section id="innovation" class="py-32 relative overflow-hidden flex items-center justify-center">
         <!-- Background decorative elements -->
         <div class="absolute inset-0 bg-nex-black">
@@ -435,8 +521,9 @@
                 <p class="text-lg text-gray-300 mb-10">
                     Your website is your digital headquarters. Don't settle for templates. We build custom-coded solutions that scale with your business and impress your clients.
                 </p>
+                <!-- Attraction CTA -->
                 <button class="px-10 py-4 bg-transparent border border-nex-primary text-white font-display font-bold uppercase tracking-widest hover:bg-nex-primary hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(0,242,255,0.2)]">
-                    View Case Studies
+                    Claim Free Consultation
                 </button>
             </div>
         </div>
@@ -483,6 +570,11 @@
                 <div class="md:w-7/12 p-10 bg-nex-black/80 flex flex-col justify-center items-center text-center">
                     <i class="fa-solid fa-paper-plane text-5xl text-nex-secondary mb-6 animate-float"></i>
                     <h3 class="text-2xl font-display font-bold text-white mb-4">Initialize Communication</h3>
+
+                    <div class="mb-6 p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
+                        <p class="text-green-400 text-sm font-bold"><i class="fa-solid fa-lock mr-2"></i> Payment only upon 100% completion</p>
+                    </div>
+
                     <p class="text-gray-400 mb-8 max-w-sm">
                         Click below to open your secure email client and send us your project requirements directly.
                     </p>
