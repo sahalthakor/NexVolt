@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexVolt Technologies | High-End Web Development</title>
-    <meta name="description" content="Futuristic web development, 3D experiences, and digital architecture.">
+    <title>NexVolt Technologies | High-End Web Development & Digital Architecture</title>
+    <meta name="description" content="Futuristic web development, SaaS & ERP platforms, AI applications, 3D experiences, and full-stack digital architecture by NexVolt Technologies.">
 
-    <!-- Tab Icon (Favicon) - Fixed: Uses geometric paths instead of text to ensure visibility -->
+    <!-- Tab Icon (Favicon) -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a12'/%3E%3Cpath d='M35 35 L20 50 L35 65 M65 35 L80 50 L65 65 M45 75 L55 25' stroke='%2300f2ff' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
 
-    <!-- Google Fonts: Orbitron (Futuristic) and Rajdhani (Technical) -->
+    <!-- Google Fonts: Orbitron (Futuristic), Rajdhani (Technical), JetBrains Mono (Code) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -28,8 +28,10 @@
                         nex: {
                             black: '#030305',
                             dark: '#0a0a12',
-                            primary: '#00f2ff', // Cyan
-                            secondary: '#bc13fe', // Purple
+                            panel: '#0f101e',
+                            primary: '#00f2ff',   // Cyber Cyan
+                            secondary: '#bc13fe', // Neon Purple
+                            emerald: '#10b981',   // Status Green
                             accent: '#ffffff',
                             glass: 'rgba(255, 255, 255, 0.05)'
                         }
@@ -37,49 +39,37 @@
                     fontFamily: {
                         display: ['Orbitron', 'sans-serif'],
                         body: ['Rajdhani', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                     },
                     animation: {
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
                         'glow': 'glow 2s ease-in-out infinite alternate',
-                        'fade-in': 'fadeIn 1s ease-out forwards',
-                        'spin-slow': 'spin 10s linear infinite',
-                        'spin-reverse': 'spinReverse 2s linear infinite',
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'spin-reverse': 'spinReverse 2.5s linear infinite',
+                        'scanline': 'scanline 6s linear infinite',
                     },
                     keyframes: {
                         float: {
-                            '0%, 100%': {
-                                transform: 'translateY(0)'
-                            },
-                            '50%': {
-                                transform: 'translateY(-20px)'
-                            },
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-16px)' },
                         },
                         glow: {
-                            'from': {
-                                boxShadow: '0 0 10px #00f2ff, 0 0 20px #00f2ff'
-                            },
-                            'to': {
-                                boxShadow: '0 0 20px #bc13fe, 0 0 30px #bc13fe'
-                            }
+                            'from': { boxShadow: '0 0 10px #00f2ff, 0 0 20px #00f2ff' },
+                            'to': { boxShadow: '0 0 20px #bc13fe, 0 0 30px #bc13fe' }
                         },
                         fadeIn: {
-                            '0%': {
-                                opacity: '0',
-                                transform: 'translateY(20px)'
-                            },
-                            '100%': {
-                                opacity: '1',
-                                transform: 'translateY(0)'
-                            }
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
                         },
                         spinReverse: {
-                            'from': {
-                                transform: 'rotate(360deg)'
-                            },
-                            'to': {
-                                transform: 'rotate(0deg)'
-                            }
+                            'from': { transform: 'rotate(360deg)' },
+                            'to': { transform: 'rotate(0deg)' }
+                        },
+                        scanline: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(1000%)' }
                         }
                     }
                 }
@@ -89,104 +79,190 @@
 
     <style>
         /* Custom Scrollbar */
-        
-         ::-webkit-scrollbar {
+        ::-webkit-scrollbar {
             width: 8px;
         }
-        
-         ::-webkit-scrollbar-track {
+        ::-webkit-scrollbar-track {
             background: #030305;
         }
-        
-         ::-webkit-scrollbar-thumb {
+        ::-webkit-scrollbar-thumb {
             background: linear-gradient(to bottom, #00f2ff, #bc13fe);
             border-radius: 4px;
         }
+
         /* Base Styles */
-        
         body {
             background-color: #030305;
             color: #ffffff;
             overflow-x: hidden;
             cursor: default;
         }
+
+        /* Top Scroll Progress Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, #00f2ff, #bc13fe, #00f2ff);
+            box-shadow: 0 0 12px rgba(0, 242, 255, 0.8);
+            z-index: 9999;
+            transition: width 0.08s ease-out;
+        }
+
+        /* Custom Cursor Follower (Desktop Only) */
+        @media (pointer: fine) {
+            #cursor-glow {
+                position: fixed;
+                width: 420px;
+                height: 420px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(0, 242, 255, 0.07) 0%, rgba(188, 19, 254, 0.04) 40%, transparent 70%);
+                pointer-events: none;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                transition: opacity 0.3s ease;
+            }
+        }
+
         /* Loader Styles */
-        
         #loader {
             pointer-events: all;
-            /* Blocks interaction while loading */
         }
+
         /* Particle Canvas Layer */
-        
         #canvas-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 0;
             pointer-events: none;
         }
+
         /* Glassmorphism Utilities */
-        
         .glass-panel {
-            background: rgba(10, 10, 18, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(10, 10, 18, 0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .glass-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 242, 255, 0.1);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(10, 10, 18, 0.85) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 242, 255, 0.14);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        
+
         .glass-card:hover {
             border-color: #00f2ff;
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
-            transform: translateY(-10px);
+            box-shadow: 0 15px 40px -10px rgba(0, 242, 255, 0.18), 0 0 25px rgba(0, 242, 255, 0.1);
+            transform: translateY(-8px);
         }
+
+        /* Project Showcase Card with Spotlight & 3D Tilt */
+        .project-card {
+            position: relative;
+            background: linear-gradient(160deg, rgba(16, 18, 34, 0.9) 0%, rgba(7, 8, 15, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            transform-style: preserve-3d;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 242, 255, 0.11), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            border-color: rgba(0, 242, 255, 0.55);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 242, 255, 0.18);
+        }
+
+        .project-card.purple-accent:hover {
+            border-color: rgba(188, 19, 254, 0.6);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(188, 19, 254, 0.22);
+        }
+
+        .project-card.purple-accent::before {
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(188, 19, 254, 0.13), transparent 40%);
+        }
+
+        /* Mockup Browser Window Preview */
+        .browser-mockup {
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .browser-mockup .preview-canvas {
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .project-card:hover .browser-mockup .preview-canvas {
+            transform: scale(1.035);
+        }
+
+        /* Filter Pill Active State */
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        .filter-btn.active {
+            background: linear-gradient(90deg, rgba(0, 242, 255, 0.2), rgba(188, 19, 254, 0.2));
+            border-color: #00f2ff;
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.25);
+        }
+
         /* Pricing Card Specifics */
-        
         .pricing-card.popular {
             border-color: #bc13fe;
-            box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
+            box-shadow: 0 0 25px rgba(188, 19, 254, 0.2);
         }
-        
         .pricing-card.popular:hover {
-            box-shadow: 0 0 40px rgba(188, 19, 254, 0.4);
+            box-shadow: 0 0 45px rgba(188, 19, 254, 0.4);
         }
+
         /* Typography Glow */
-        
         .text-glow {
-            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
         }
-        
         .text-glow-purple {
-            text-shadow: 0 0 10px rgba(188, 19, 254, 0.5);
+            text-shadow: 0 0 15px rgba(188, 19, 254, 0.5);
         }
-        /* Utility Classes for Animation */
-        
+
+        /* Reveal on Scroll Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease-out;
+            transform: translateY(40px);
+            transition: all 0.85s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-        /* Button Styles */
-        
+
+        /* Cyber Button Shimmer */
         .btn-cyber {
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
         }
-        
         .btn-cyber::before {
             content: '';
             position: absolute;
@@ -194,61 +270,86 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+            transition: 0.55s;
         }
-        
         .btn-cyber:hover::before {
             left: 100%;
         }
-        /* Grid Background Pattern for sections */
-        
+
+        /* Grid Background Pattern */
         .grid-bg {
             background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
         }
-        /* Text Rotation Animation Classes */
-        
-        .text-rotate-enter {
-            animation: fadeIn 0.8s ease-out forwards;
+
+        /* Infinite Tech Ticker */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
         }
-        
-        .text-rotate-exit {
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 32s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        /* Modal Backdrop */
+        #project-modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #project-modal.hidden-modal {
             opacity: 0;
-            transform: translateY(-20px);
-            transition: all 0.5s ease-in;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #project-modal.visible-modal {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
         }
     </style>
 </head>
 
 <body class="font-body selection:bg-nex-primary selection:text-nex-black">
 
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Ambient Cursor Glow -->
+    <div id="cursor-glow" class="hidden md:block"></div>
+
     <!-- Preloader -->
-    <div id="loader" class="fixed inset-0 z-[100] bg-nex-black flex flex-col items-center justify-center transition-opacity duration-700">
+    <div id="loader" class="fixed inset-0 z-[100] bg-nex-black flex flex-col items-center justify-center transition-opacity duration-500">
         <div class="relative w-24 h-24 mb-6">
             <div class="absolute inset-0 border-t-4 border-nex-primary rounded-full animate-spin"></div>
             <div class="absolute inset-2 border-r-4 border-nex-secondary rounded-full animate-spin-reverse"></div>
-            <!-- Code Icon -->
             <div class="absolute inset-0 flex items-center justify-center animate-pulse">
                 <i class="fa-solid fa-code text-3xl text-white"></i>
             </div>
         </div>
-        <div class="text-nex-primary font-display tracking-[0.5em] text-sm animate-pulse">INITIALIZING...</div>
+        <div class="text-nex-primary font-display tracking-[0.5em] text-xs md:text-sm animate-pulse">NEXVOLT // INITIALIZING</div>
     </div>
 
-    <!-- Background Canvas -->
+    <!-- Background Neural Particle Canvas -->
     <div id="canvas-container">
         <canvas id="neural-canvas"></canvas>
     </div>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-5">
         <div class="container mx-auto px-6 flex justify-between items-center">
 
             <!-- Logo Section -->
             <a href="#" class="flex items-center gap-3 group">
-                <!-- IT Symbol: Code -->
-                <i class="fa-solid fa-code text-3xl text-nex-primary animate-pulse group-hover:rotate-180 transition-transform duration-500"></i>
+                <div class="w-10 h-10 rounded-lg bg-nex-primary/10 border border-nex-primary/40 flex items-center justify-center group-hover:bg-nex-primary/20 group-hover:shadow-[0_0_15px_rgba(0,242,255,0.4)] transition-all">
+                    <i class="fa-solid fa-code text-xl text-nex-primary group-hover:rotate-180 transition-transform duration-500"></i>
+                </div>
                 <div class="flex flex-col">
                     <span class="text-2xl md:text-3xl font-display font-bold tracking-widest text-white leading-none">
                         NEX<span class="text-nex-primary">VOLT</span>
@@ -260,111 +361,810 @@
             </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="text-gray-300 hover:text-nex-primary transition-colors text-lg tracking-wide uppercase font-semibold">About</a>
-                <a href="#solutions" class="text-gray-300 hover:text-nex-primary transition-colors text-lg tracking-wide uppercase font-semibold">Services</a>
-                <a href="#pricing" class="text-gray-300 hover:text-nex-primary transition-colors text-lg tracking-wide uppercase font-semibold">Pricing</a>
-                <a href="#contact" class="px-6 py-2 border border-nex-primary text-nex-primary hover:bg-nex-primary hover:text-nex-black transition-all duration-300 font-display font-bold uppercase tracking-wider clip-path-slant btn-cyber">
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="#projects" class="text-white hover:text-nex-primary transition-colors text-base tracking-wider uppercase font-semibold flex items-center gap-2">
+                    <span>Projects</span>
+                    <span class="px-1.5 py-0.5 text-[10px] font-mono bg-nex-primary/20 text-nex-primary border border-nex-primary/40 rounded">04</span>
+                </a>
+                <a href="#about" class="text-gray-300 hover:text-nex-primary transition-colors text-base tracking-wider uppercase font-semibold">About</a>
+                <a href="#solutions" class="text-gray-300 hover:text-nex-primary transition-colors text-base tracking-wider uppercase font-semibold">Services</a>
+                <a href="#pricing" class="text-gray-300 hover:text-nex-primary transition-colors text-base tracking-wider uppercase font-semibold">Pricing</a>
+                <a href="#contact" class="px-6 py-2.5 border border-nex-primary text-nex-primary hover:bg-nex-primary hover:text-nex-black transition-all duration-300 font-display font-bold text-sm uppercase tracking-wider rounded btn-cyber">
                     Start Project
                 </a>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
+            <button id="mobile-menu-btn" aria-label="Toggle Menu" class="lg:hidden text-white text-2xl focus:outline-none">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
         <!-- Mobile Dropdown -->
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full glass-panel border-t border-gray-800">
-            <div class="flex flex-col p-6 space-y-4">
+            <div class="flex flex-col p-6 space-y-4 font-display text-sm uppercase tracking-wider">
+                <a href="#projects" class="text-nex-primary font-bold flex items-center justify-between">
+                    <span>Featured Projects</span>
+                    <span class="px-2 py-0.5 text-xs bg-nex-primary/20 border border-nex-primary/40 rounded">04 Live</span>
+                </a>
                 <a href="#about" class="text-white hover:text-nex-primary">About</a>
                 <a href="#solutions" class="text-white hover:text-nex-primary">Services</a>
                 <a href="#pricing" class="text-white hover:text-nex-primary">Pricing</a>
-                <a href="#contact" class="text-nex-primary font-bold">Start Project</a>
+                <a href="#contact" class="py-3 bg-nex-primary text-nex-black text-center font-bold rounded">Start Project</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-32 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-nex-black z-0 pointer-events-none"></div>
+    <section class="relative min-h-screen flex items-center justify-center pt-28 pb-20 overflow-hidden z-10">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-nex-black/30 to-nex-black z-0 pointer-events-none"></div>
 
         <div class="container mx-auto px-6 relative z-10 text-center">
-            <div class="inline-block mb-4 px-4 py-1 border border-nex-secondary rounded-full bg-nex-secondary/10 backdrop-blur-sm reveal">
-                <span class="text-nex-secondary font-bold tracking-widest text-sm uppercase">Next-Gen Development Studio</span>
+            <!-- Live Status & Studio Pill -->
+            <div class="inline-flex flex-wrap items-center justify-center gap-3 mb-6 px-5 py-1.5 border border-nex-secondary/50 rounded-full bg-nex-secondary/10 backdrop-blur-md reveal">
+                <span class="flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-widest">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    System Online
+                </span>
+                <span class="text-white/20">|</span>
+                <span class="text-nex-secondary font-bold tracking-widest text-xs md:text-sm uppercase">Next-Gen Development Studio</span>
             </div>
 
-            <h1 class="text-5xl md:text-8xl font-display font-black text-white mb-6 leading-tight tracking-tight reveal" style="transition-delay: 100ms;">
+            <!-- Dynamic Rotating Headline -->
+            <h1 class="text-4xl sm:text-6xl md:text-8xl font-display font-black text-white mb-6 leading-tight tracking-tight reveal" style="transition-delay: 100ms;">
                 <span id="hero-headline" class="text-transparent bg-clip-text bg-gradient-to-r from-nex-primary via-white to-nex-secondary text-glow block min-h-[1.2em]">FORGING DIGITAL REALITIES</span>
             </h1>
 
-            <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-10 font-light reveal" style="transition-delay: 200ms;">
-                We craft high-performance websites, immersive 3D experiences, and scalable web architectures for the brands of tomorrow.
+            <p class="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8 font-light leading-relaxed reveal" style="transition-delay: 200ms;">
+                We engineer high-performance web applications, enterprise ERP systems, AI-driven platforms, and full-stack digital architectures for the brands of tomorrow.
             </p>
 
-            <!-- Pay After Tagline -->
+            <!-- Trust Protocol Badge (Fixed Icon so it renders in FA6 Free) -->
             <div class="mb-10 reveal" style="transition-delay: 250ms;">
-                <span class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 font-display text-sm tracking-wider uppercase">
-                    <i class="fa-solid fa-shield-check"></i>
-                    Trust Protocol: Pay Only After Project Completion
+                <span class="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-400 font-display text-xs md:text-sm tracking-wider uppercase shadow-[0_0_25px_rgba(16,185,129,0.15)]">
+                    <i class="fa-solid fa-shield-halved text-emerald-400"></i>
+                    Trust Protocol: Pay Only After 100% Project Completion
                 </span>
             </div>
 
-            <div class="flex flex-col md:flex-row justify-center gap-6 reveal" style="transition-delay: 300ms;">
-                <a href="#pricing" class="group relative px-8 py-4 bg-nex-primary text-nex-black font-display font-bold text-lg uppercase tracking-wider hover:shadow-[0_0_40px_rgba(0,242,255,0.6)] transition-all duration-300 btn-cyber">
-                    View Pricing
-                    <i class="fa-solid fa-tag ml-2 group-hover:translate-x-1 transition-transform"></i>
+            <!-- Hero CTAs -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-5 reveal" style="transition-delay: 300ms;">
+                <a href="#projects" class="w-full sm:w-auto group relative px-8 py-4 bg-nex-primary text-nex-black font-display font-bold text-base md:text-lg uppercase tracking-wider rounded hover:shadow-[0_0_40px_rgba(0,242,255,0.6)] transition-all duration-300 btn-cyber">
+                    Explore Projects
+                    <i class="fa-solid fa-arrow-up-right-from-square ml-2 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform"></i>
                 </a>
-                <a href="#contact" class="px-8 py-4 border border-white/20 hover:border-nex-secondary text-white font-display font-bold text-lg uppercase tracking-wider hover:bg-nex-secondary/10 transition-all duration-300">
+                <a href="#pricing" class="w-full sm:w-auto px-8 py-4 border border-nex-secondary/60 bg-nex-secondary/10 hover:bg-nex-secondary hover:text-white text-white font-display font-bold text-base md:text-lg uppercase tracking-wider rounded hover:shadow-[0_0_30px_rgba(188,19,254,0.45)] transition-all duration-300">
+                    View Pricing
+                </a>
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 border border-white/20 hover:border-nex-primary text-gray-200 hover:text-nex-primary font-display font-bold text-base md:text-lg uppercase tracking-wider rounded transition-all duration-300">
                     Hire Us
                 </a>
+            </div>
+
+            <!-- Quick Project Preview Strip -->
+            <div class="mt-16 pt-8 border-t border-white/10 max-w-4xl mx-auto reveal" style="transition-delay: 400ms;">
+                <p class="text-xs font-mono uppercase tracking-[0.3em] text-gray-400 mb-4">Verified Production Deployments & Architectures</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-left">
+                    <a href="#project-educore" class="glass-panel p-3 rounded-lg border border-white/10 hover:border-nex-primary transition-all group">
+                        <div class="flex items-center justify-between text-xs font-mono text-nex-primary mb-1">
+                            <span>01 // ERP SAAS</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                        <div class="font-display font-bold text-sm text-white truncate">EduCore Ultimate V6.1</div>
+                    </a>
+                    <a href="#project-aijob" class="glass-panel p-3 rounded-lg border border-white/10 hover:border-nex-secondary transition-all group">
+                        <div class="flex items-center justify-between text-xs font-mono text-nex-secondary mb-1">
+                            <span>02 // AI PLATFORM</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                        <div class="font-display font-bold text-sm text-white truncate">AI Job Hunter</div>
+                    </a>
+                    <a href="#project-feedants" class="glass-panel p-3 rounded-lg border border-white/10 hover:border-nex-primary transition-all group">
+                        <div class="flex items-center justify-between text-xs font-mono text-nex-primary mb-1">
+                            <span>03 // MONOREPO</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                        <div class="font-display font-bold text-sm text-white truncate">Feedants Full-Stack</div>
+                    </a>
+                    <a href="#project-tuition" class="glass-panel p-3 rounded-lg border border-white/10 hover:border-nex-secondary transition-all group">
+                        <div class="flex items-center justify-between text-xs font-mono text-nex-secondary mb-1">
+                            <span>04 // EDTECH WEB</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                        <div class="font-display font-bold text-sm text-white truncate">Thakor Tuition Hub</div>
+                    </a>
+                </div>
             </div>
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-nex-primary">
+        <a href="#projects" aria-label="Scroll to projects" class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce text-nex-primary hover:text-white transition-colors">
             <i class="fa-solid fa-chevron-down text-2xl"></i>
+        </a>
+    </section>
+
+    <!-- Infinite Tech Stack Marquee -->
+    <div class="py-4 border-y border-white/10 bg-nex-dark/90 backdrop-blur-md overflow-hidden relative z-10">
+        <div class="animate-marquee flex items-center space-x-12 text-gray-400 font-mono text-xs md:text-sm uppercase tracking-widest">
+            <span class="flex items-center gap-2"><i class="fa-brands fa-react text-nex-primary"></i> React & React Native</span>
+            <span class="text-white/20">//</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-code text-nex-secondary"></i> TypeScript 89.9%</span>
+            <span class="text-white/20">//</span>
+            <span class="flex items-center gap-2"><i class="fa-brands fa-node-js text-emerald-400"></i> Node.js & Express</span>
+            <span class="text-white/20">//</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-nex-primary"></i> tRPC & REST APIs</span>
+            <span class="text-white/20">//</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-database text-nex-secondary"></i> MongoDB & Drizzle</span>
+            <span class="text-white/20">//</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-brain text-nex-primary"></i> AI Career Intelligence</span>
+            <span class="text-white/20">//</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-layer-group text-nex-secondary"></i> Enterprise ERP Systems</span>
+            <span class="text-white/20">//</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-mobile-screen text-emerald-400"></i> Expo Router Mobile</span>
+            <span class="text-white/20">//</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="flex items-center gap-2"><i class="fa-brands fa-react text-nex-primary"></i> React & React Native</span>
+            <span class="text-white/20">//</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-code text-nex-secondary"></i> TypeScript 89.9%</span>
+            <span class="text-white/20">//</span>
+            <span class="flex items-center gap-2"><i class="fa-brands fa-node-js text-emerald-400"></i> Node.js & Express</span>
+            <span class="text-white/20">//</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-nex-primary"></i> tRPC & REST APIs</span>
+            <span class="text-white/20">//</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-database text-nex-secondary"></i> MongoDB & Drizzle</span>
+            <span class="text-white/20">//</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-brain text-nex-primary"></i> AI Career Intelligence</span>
+            <span class="text-white/20">//</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-layer-group text-nex-secondary"></i> Enterprise ERP Systems</span>
+            <span class="text-white/20">//</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-mobile-screen text-emerald-400"></i> Expo Router Mobile</span>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- FEATURED PROJECTS SHOWCASE SECTION (NEW FLAGSHIP SECTION)             -->
+    <!-- ===================================================================== -->
+    <section id="projects" class="py-28 relative grid-bg z-10">
+        <div class="container mx-auto px-6">
+
+            <!-- Section Header -->
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-8 reveal">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-nex-primary/10 border border-nex-primary/30 text-nex-primary font-mono text-xs uppercase tracking-widest mb-4">
+                        <i class="fa-solid fa-terminal"></i> Production Portfolio // Deployed Works
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-display font-black text-white leading-tight">
+                        Featured <span class="text-transparent bg-clip-text bg-gradient-to-r from-nex-primary via-white to-nex-secondary">Deployments</span>
+                    </h2>
+                </div>
+                <p class="text-gray-400 max-w-xl text-lg">
+                    Explore our live production systems—from cloud-hosted educational ERPs and AI career intelligence platforms to full-stack TypeScript monorepos and brand portals.
+                </p>
+            </div>
+
+            <!-- Interactive Filter Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-12 pb-6 border-b border-white/10 reveal">
+                <div class="flex flex-wrap gap-3" id="project-filters">
+                    <button data-filter="all" class="filter-btn active px-5 py-2 rounded-full border border-white/15 text-sm font-display uppercase tracking-wider text-gray-300">
+                        All Systems <span class="ml-1 text-xs font-mono text-nex-primary">(04)</span>
+                    </button>
+                    <button data-filter="saas" class="filter-btn px-5 py-2 rounded-full border border-white/15 text-sm font-display uppercase tracking-wider text-gray-300 hover:border-nex-primary">
+                        SaaS & AI Platforms
+                    </button>
+                    <button data-filter="fullstack" class="filter-btn px-5 py-2 rounded-full border border-white/15 text-sm font-display uppercase tracking-wider text-gray-300 hover:border-nex-primary">
+                        Full-Stack & Mobile
+                    </button>
+                    <button data-filter="edtech" class="filter-btn px-5 py-2 rounded-full border border-white/15 text-sm font-display uppercase tracking-wider text-gray-300 hover:border-nex-primary">
+                        EdTech Ecosystems
+                    </button>
+                </div>
+                <div class="text-xs font-mono text-gray-400 flex items-center gap-2">
+                    <i class="fa-solid fa-hand-pointer text-nex-primary animate-pulse"></i>
+                    <span>Hover cards for 3D telemetry or click <strong class="text-white">Inspect Architecture</strong></span>
+                </div>
+            </div>
+
+            <!-- Projects Grid (2x2 Flagship Showcase) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10" id="projects-grid">
+
+                <!-- ========================================================= -->
+                <!-- PROJECT 01: EDUCORE ULTIMATE (ERP)                        -->
+                <!-- ========================================================= -->
+                <article id="project-educore" data-category="saas edtech" class="project-card rounded-2xl flex flex-col reveal">
+                    <!-- Browser Mockup Header -->
+                    <div class="browser-mockup bg-[#070b19]">
+                        <!-- Browser Top Bar -->
+                        <div class="px-4 py-3 bg-[#0a0d1a] border-b border-white/10 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                            </div>
+                            <div class="px-3 py-1 rounded bg-black/60 border border-white/10 text-[11px] font-mono text-gray-300 flex items-center gap-2 max-w-[240px] sm:max-w-xs truncate">
+                                <i class="fa-solid fa-lock text-emerald-400 text-[10px]"></i>
+                                <span>sahalthakor.github.io/ERP/</span>
+                            </div>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                                ● V6.1 Live
+                            </span>
+                        </div>
+
+                        <!-- Visual Mockup of EduCore Ultimate Interface -->
+                        <div class="preview-canvas p-6 bg-gradient-to-br from-[#f8faff] via-[#eef4ff] to-[#e0eaff] text-slate-900 relative min-h-[250px] flex flex-col justify-between">
+                            <!-- Top Mini Navbar inside Mockup -->
+                            <div class="flex items-center justify-between border-b border-slate-200/80 pb-3">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-7 h-7 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow">
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                    </div>
+                                    <span class="font-bold text-sm tracking-tight text-slate-900">EduCore <span class="text-blue-600 font-semibold">Ultimate</span></span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-700 font-mono text-[10px] font-bold">• V6.1 NOW AVAILABLE</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-blue-600 text-white text-[10px] font-semibold shadow-sm">Get Started</span>
+                                </div>
+                            </div>
+
+                            <!-- Center Hero inside Mockup -->
+                            <div class="my-4 text-center">
+                                <div class="text-lg sm:text-xl font-extrabold text-slate-900 leading-snug">
+                                    The Operating System for <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Modern Education</span>
+                                </div>
+                                <p class="text-[11px] text-slate-600 mt-1 max-w-md mx-auto">
+                                    Manage students, finance, attendance & learning resources in one unified platform. Zero setup required.
+                                </p>
+                                <div class="flex justify-center gap-2 mt-3">
+                                    <span class="px-3 py-1.5 rounded-lg bg-blue-600 text-white text-[11px] font-bold shadow-md shadow-blue-500/30">Create Institute</span>
+                                    <span class="px-3 py-1.5 rounded-lg bg-white text-slate-700 border border-slate-200 text-[11px] font-semibold">Student Portal</span>
+                                </div>
+                            </div>
+
+                            <!-- Feature Mini-Cards inside Mockup -->
+                            <div class="grid grid-cols-3 gap-2 pt-2">
+                                <div class="bg-white/90 backdrop-blur p-2.5 rounded-lg border border-slate-200/80 shadow-sm">
+                                    <div class="text-blue-600 text-xs font-bold flex items-center gap-1"><i class="fa-solid fa-chart-line"></i> Analytics</div>
+                                    <div class="text-[10px] text-slate-500 mt-0.5">Real-time finance & academic insights</div>
+                                </div>
+                                <div class="bg-white/90 backdrop-blur p-2.5 rounded-lg border border-slate-200/80 shadow-sm">
+                                    <div class="text-purple-600 text-xs font-bold flex items-center gap-1"><i class="fa-solid fa-wand-magic-sparkles"></i> Automation</div>
+                                    <div class="text-[10px] text-slate-500 mt-0.5">Auto logins, fee receipts & reports</div>
+                                </div>
+                                <div class="bg-white/90 backdrop-blur p-2.5 rounded-lg border border-slate-200/80 shadow-sm">
+                                    <div class="text-emerald-600 text-xs font-bold flex items-center gap-1"><i class="fa-solid fa-mobile-screen-button"></i> Mobile First</div>
+                                    <div class="text-[10px] text-slate-500 mt-0.5">Responsive across all devices</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Content Body -->
+                    <div class="p-8 flex-grow flex flex-col justify-between relative z-10">
+                        <div>
+                            <div class="flex items-center justify-between text-xs font-mono text-nex-primary mb-2">
+                                <span>PROJECT // 01</span>
+                                <span>ENTERPRISE ERP & EDTECH SAAS</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-display font-bold text-white mb-2 group-hover:text-nex-primary transition-colors">
+                                EduCore Ultimate <span class="text-sm font-mono text-nex-primary align-middle ml-1">v6.1</span>
+                            </h3>
+                            <p class="text-nex-primary/90 font-semibold text-sm tracking-wide uppercase mb-4">
+                                "The Operating System for Modern Education"
+                            </p>
+                            <p class="text-gray-300 text-base leading-relaxed mb-6">
+                                A unified educational ERP system engineered to manage student lifecycles, institutional finance, attendance tracking, and digital learning resources with zero setup friction. Features dedicated workflows for both Institute Administrators and Student Portals.
+                            </p>
+
+                            <!-- Key Highlights -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6 text-sm text-gray-300">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-primary text-xs"></i>
+                                    <span>Real-Time Financial & Academic Analytics</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-primary text-xs"></i>
+                                    <span>Automated Student Logins & Fee Receipts</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-primary text-xs"></i>
+                                    <span>Dual Institute & Student Portal Flows</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-primary text-xs"></i>
+                                    <span>Zero-Setup Mobile-First Architecture</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <!-- Tech Stack Pills -->
+                            <div class="flex flex-wrap gap-2 mb-6 pt-4 border-t border-white/10">
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">ERP Architecture</span>
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">JavaScript ES6+</span>
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Responsive UI</span>
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Analytics Engine</span>
+                                <span class="px-3 py-1 rounded-md bg-nex-primary/10 border border-nex-primary/30 text-xs font-mono text-nex-primary">GitHub Pages</span>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <a href="https://sahalthakor.github.io/ERP/" target="_blank" rel="noopener noreferrer" class="flex-1 py-3.5 px-5 bg-nex-primary text-nex-black font-display font-bold text-xs md:text-sm uppercase tracking-wider rounded text-center hover:shadow-[0_0_25px_rgba(0,242,255,0.5)] transition-all btn-cyber flex items-center justify-center gap-2">
+                                    <span>Launch Live ERP</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <button type="button" onclick="openProjectModal('educore')" class="py-3.5 px-5 border border-white/20 hover:border-nex-primary text-white hover:text-nex-primary font-display font-bold text-xs md:text-sm uppercase tracking-wider rounded transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                                    <span>Inspect Architecture</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========================================================= -->
+                <!-- PROJECT 02: AI JOB HUNTER (VERCEL AI SAAS)                -->
+                <!-- ========================================================= -->
+                <article id="project-aijob" data-category="saas" class="project-card purple-accent rounded-2xl flex flex-col reveal" style="transition-delay: 100ms;">
+                    <!-- Browser Mockup Header -->
+                    <div class="browser-mockup bg-[#0c0818]">
+                        <!-- Browser Top Bar -->
+                        <div class="px-4 py-3 bg-[#100b1c] border-b border-white/10 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                            </div>
+                            <div class="px-3 py-1 rounded bg-black/60 border border-white/10 text-[11px] font-mono text-gray-300 flex items-center gap-2 max-w-[240px] sm:max-w-xs truncate">
+                                <i class="fa-solid fa-lock text-emerald-400 text-[10px]"></i>
+                                <span>ai-job-hunter-tau.vercel.app</span>
+                            </div>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase bg-purple-500/20 text-purple-300 border border-purple-500/40">
+                                ▲ Vercel Cloud
+                            </span>
+                        </div>
+
+                        <!-- Visual Mockup of AI Job Hunter Interface -->
+                        <div class="preview-canvas p-6 bg-gradient-to-br from-[#ECE9F9] via-[#E4Dff8] to-[#D9D2F7] text-slate-900 relative min-h-[250px] flex flex-col justify-between">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-xl bg-[#5850EC] text-white flex items-center justify-center font-bold shadow-md shadow-indigo-500/30">
+                                        <i class="fa-solid fa-briefcase"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-extrabold text-sm text-slate-900 leading-none">AI Job Hunter</div>
+                                        <div class="text-[10px] text-indigo-700 font-medium">Intelligent career discovery</div>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-full bg-indigo-600/10 text-indigo-700 border border-indigo-500/20 font-mono text-[10px] font-bold">
+                                    CAREER INTELLIGENCE PLATFORM
+                                </span>
+                            </div>
+
+                            <!-- Center Auth & Intelligence Card Mockup -->
+                            <div class="my-3 bg-white rounded-xl p-4 shadow-lg border border-indigo-100 max-w-md mx-auto w-full">
+                                <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
+                                    <div class="flex gap-2">
+                                        <span class="px-3 py-1 rounded-md bg-[#5850EC] text-white text-[10px] font-bold">Sign In</span>
+                                        <span class="px-3 py-1 rounded-md bg-slate-100 text-slate-600 text-[10px] font-semibold">Create Account</span>
+                                    </div>
+                                    <span class="text-[10px] font-mono text-emerald-600 font-semibold flex items-center gap-1">
+                                        <i class="fa-solid fa-shield-halved"></i> Encrypted Vault
+                                    </span>
+                                </div>
+                                <div class="text-xs font-bold text-slate-800 mb-1">Continue your AI-powered job search</div>
+                                <div class="grid grid-cols-2 gap-2 mb-2.5">
+                                    <div class="px-2.5 py-1.5 rounded bg-slate-50 border border-slate-200 text-[10px] text-slate-400 font-mono">you@example.com</div>
+                                    <div class="px-2.5 py-1.5 rounded bg-[#5850EC] text-white text-[10px] font-bold text-center">Sign In →</div>
+                                </div>
+                                <div class="text-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200/70 rounded px-2.5 py-1 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-check text-emerald-600"></i>
+                                    <span>Your resume data is protected and belongs only to your account.</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between text-[10px] text-slate-600 font-mono px-1">
+                                <span>AI Resume Parsing</span>
+                                <span>•</span>
+                                <span>Role Match Scoring</span>
+                                <span>•</span>
+                                <span>Zero Data Leakage</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Content Body -->
+                    <div class="p-8 flex-grow flex flex-col justify-between relative z-10">
+                        <div>
+                            <div class="flex items-center justify-between text-xs font-mono text-nex-secondary mb-2">
+                                <span>PROJECT // 02</span>
+                                <span>AI CAREER INTELLIGENCE SAAS</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-display font-bold text-white mb-2 group-hover:text-nex-secondary transition-colors">
+                                AI Job Hunter
+                            </h3>
+                            <p class="text-nex-secondary font-semibold text-sm tracking-wide uppercase mb-4">
+                                "Career Intelligence Platform — Intelligent Career Discovery"
+                            </p>
+                            <p class="text-gray-300 text-base leading-relaxed mb-6">
+                                An AI-powered career discovery and job hunting platform deployed on Vercel. Designed with user-owned resume privacy at its core, streamlining candidate authentication, intelligent job matching, and automated career pipeline tracking.
+                            </p>
+
+                            <!-- Key Highlights -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6 text-sm text-gray-300">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-secondary text-xs"></i>
+                                    <span>AI-Powered Career & Role Discovery</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-secondary text-xs"></i>
+                                    <span>Private, Account-Isolated Resume Data</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-secondary text-xs"></i>
+                                    <span>Seamless Sign-In & Onboarding Portal</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-secondary text-xs"></i>
+                                    <span>Edge-Optimized Vercel Cloud Deployment</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <!-- Tech Stack Pills -->
+                            <div class="flex flex-wrap gap-2 mb-6 pt-4 border-t border-white/10">
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">AI Career Engine</span>
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Authentication Portal</span>
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Resume Security</span>
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Modern SaaS UI</span>
+                                <span class="px-3 py-1 rounded-md bg-nex-secondary/15 border border-nex-secondary/40 text-xs font-mono text-nex-secondary">Vercel Cloud</span>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <a href="https://ai-job-hunter-tau.vercel.app/" target="_blank" rel="noopener noreferrer" class="flex-1 py-3.5 px-5 bg-nex-secondary text-white font-display font-bold text-xs md:text-sm uppercase tracking-wider rounded text-center hover:shadow-[0_0_25px_rgba(188,19,254,0.5)] transition-all btn-cyber flex items-center justify-center gap-2">
+                                    <span>Launch AI Platform</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <button type="button" onclick="openProjectModal('aijob')" class="py-3.5 px-5 border border-white/20 hover:border-nex-secondary text-white hover:text-nex-secondary font-display font-bold text-xs md:text-sm uppercase tracking-wider rounded transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                                    <span>Inspect Architecture</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========================================================= -->
+                <!-- PROJECT 03: FEEDANTS FULL-STACK COMPETITION MONOREPO      -->
+                <!-- ========================================================= -->
+                <article id="project-feedants" data-category="fullstack" class="project-card rounded-2xl flex flex-col reveal">
+                    <!-- Browser Mockup Header -->
+                    <div class="browser-mockup bg-[#090d16]">
+                        <!-- Browser Top Bar -->
+                        <div class="px-4 py-3 bg-[#0d1117] border-b border-white/10 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                            </div>
+                            <div class="px-3 py-1 rounded bg-black/60 border border-white/10 text-[11px] font-mono text-gray-300 flex items-center gap-2 max-w-[240px] sm:max-w-xs truncate">
+                                <i class="fa-brands fa-github text-white text-xs"></i>
+                                <span>github.com/sahalthakor/-feedants</span>
+                            </div>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase bg-sky-500/15 text-sky-400 border border-sky-500/30">
+                                TS 89.9%
+                            </span>
+                        </div>
+
+                        <!-- Visual Mockup of Feedants Monorepo & Competition Lifecycle -->
+                        <div class="preview-canvas p-6 bg-gradient-to-br from-[#0d1117] via-[#131a26] to-[#0a0f18] text-white relative min-h-[250px] flex flex-col justify-between">
+                            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-8 h-8 rounded-lg bg-nex-primary/15 border border-nex-primary/40 text-nex-primary flex items-center justify-center">
+                                        <i class="fa-solid fa-layer-group"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-mono font-bold text-xs sm:text-sm text-white">sahalthakor / <span class="text-nex-primary">-feedants</span></div>
+                                        <div class="text-[10px] text-gray-400">Full-Stack Competition Details & Lifecycle Architecture</div>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-1 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-mono text-[10px]">
+                                    Full-Stack Monorepo
+                                </span>
+                            </div>
+
+                            <!-- Split View: Monorepo Folders + Competition Engine Telemetry -->
+                            <div class="grid grid-cols-12 gap-3 my-3">
+                                <!-- Repo Tree -->
+                                <div class="col-span-5 bg-black/50 border border-white/10 rounded-lg p-3 font-mono text-[11px] space-y-1.5 text-gray-300">
+                                    <div class="text-[10px] text-gray-500 uppercase mb-1">Workspace Tree</div>
+                                    <div class="flex items-center gap-1.5"><i class="fa-solid fa-folder text-sky-400"></i> <span>client/</span></div>
+                                    <div class="flex items-center gap-1.5"><i class="fa-solid fa-folder text-purple-400"></i> <span>mobile/ <span class="text-[9px] text-gray-500">(Expo)</span></span></div>
+                                    <div class="flex items-center gap-1.5"><i class="fa-solid fa-folder text-emerald-400"></i> <span>server/ <span class="text-[9px] text-gray-500">(tRPC)</span></span></div>
+                                    <div class="flex items-center gap-1.5"><i class="fa-solid fa-folder text-amber-400"></i> <span>shared/ & drizzle/</span></div>
+                                </div>
+
+                                <!-- Competition Details Lifecycle Module -->
+                                <div class="col-span-7 bg-white/5 border border-white/10 rounded-lg p-3 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center justify-between text-[10px] font-mono text-nex-primary mb-1">
+                                            <span>COMPETITION ENGINE</span>
+                                            <span>LIVE COUNTDOWN</span>
+                                        </div>
+                                        <div class="text-xs font-bold text-white mb-2">Registration, Capacity & Judging Flow</div>
+                                        <!-- Capacity Bar -->
+                                        <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden mb-1">
+                                            <div class="bg-gradient-to-r from-nex-primary to-nex-secondary h-full w-[89%]"></div>
+                                        </div>
+                                        <div class="flex justify-between text-[10px] font-mono text-gray-400">
+                                            <span>TypeScript: 89.9%</span>
+                                            <span>JS: 5.1% • CSS: 4.8%</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-1.5 mt-2">
+                                        <span class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 text-[9px] font-mono">React Native</span>
+                                        <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[9px] font-mono">Node + tRPC</span>
+                                        <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 text-[9px] font-mono">MongoDB</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Language Bar -->
+                            <div class="w-full h-1.5 rounded-full overflow-hidden flex bg-white/10">
+                                <div class="bg-[#3178c6] h-full" style="width: 89.9%" title="TypeScript 89.9%"></div>
+                                <div class="bg-[#f1e05a] h-full" style="width: 5.1%" title="JavaScript 5.1%"></div>
+                                <div class="bg-[#563d7c] h-full" style="width: 5.0%" title="CSS/HTML 5.0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Content Body -->
+                    <div class="p-8 flex-grow flex flex-col justify-between relative z-10">
+                        <div>
+                            <div class="flex items-center justify-between text-xs font-mono text-nex-primary mb-2">
+                                <span>PROJECT // 03</span>
+                                <span>FULL-STACK & CROSS-PLATFORM MONOREPO</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-display font-bold text-white mb-2 group-hover:text-nex-primary transition-colors">
+                                Feedants Competition Engine
+                            </h3>
+                            <p class="text-nex-primary/90 font-semibold text-sm tracking-wide uppercase mb-4">
+                                "End-to-End Competition Lifecycle & Cross-Platform Architecture"
+                            </p>
+                            <p class="text-gray-300 text-base leading-relaxed mb-6">
+                                A full-stack TypeScript monorepo (`client/`, `mobile/`, `server/`, `shared/`, `drizzle/`) delivering a complete competition experience: live registration, participant capacity tracking, real-time countdowns, submission handling, judging criteria, rewards, and lifecycle state management.
+                            </p>
+
+                            <!-- Key Highlights -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6 text-sm text-gray-300">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-primary text-xs"></i>
+                                    <span>React Native + Expo Router Mobile Client</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-primary text-xs"></i>
+                                    <span>End-to-End Type-Safe Node.js & tRPC API</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-primary text-xs"></i>
+                                    <span>MongoDB + Database Abstraction Layer</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-primary text-xs"></i>
+                                    <span>Capacity, Countdown & Submission States</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <!-- Tech Stack Pills -->
+                            <div class="flex flex-wrap gap-2 mb-6 pt-4 border-t border-white/10">
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">TypeScript (89.9%)</span>
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">React Native & Expo</span>
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Node.js & Express</span>
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">tRPC</span>
+                                <span class="px-3 py-1 rounded-md bg-nex-primary/10 border border-nex-primary/30 text-xs font-mono text-nex-primary">MongoDB</span>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <a href="https://github.com/sahalthakor/-feedants" target="_blank" rel="noopener noreferrer" class="flex-1 py-3.5 px-5 bg-nex-primary text-nex-black font-display font-bold text-xs md:text-sm uppercase tracking-wider rounded text-center hover:shadow-[0_0_25px_rgba(0,242,255,0.5)] transition-all btn-cyber flex items-center justify-center gap-2">
+                                    <i class="fa-brands fa-github text-base"></i>
+                                    <span>Explore Repository</span>
+                                </a>
+                                <button type="button" onclick="openProjectModal('feedants')" class="py-3.5 px-5 border border-white/20 hover:border-nex-primary text-white hover:text-nex-primary font-display font-bold text-xs md:text-sm uppercase tracking-wider rounded transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                                    <span>Inspect Architecture</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========================================================= -->
+                <!-- PROJECT 04: THAKOR TUITION CLASSES (EDTECH PORTAL)        -->
+                <!-- ========================================================= -->
+                <article id="project-tuition" data-category="edtech" class="project-card purple-accent rounded-2xl flex flex-col reveal" style="transition-delay: 100ms;">
+                    <!-- Browser Mockup Header -->
+                    <div class="browser-mockup bg-[#0B132B]">
+                        <!-- Browser Top Bar -->
+                        <div class="px-4 py-3 bg-[#070c1d] border-b border-white/10 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                            </div>
+                            <div class="px-3 py-1 rounded bg-black/60 border border-white/10 text-[11px] font-mono text-gray-300 flex items-center gap-2 max-w-[240px] sm:max-w-xs truncate">
+                                <i class="fa-solid fa-lock text-emerald-400 text-[10px]"></i>
+                                <span>sahalthakor.github.io/tution/</span>
+                            </div>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase bg-amber-400/20 text-amber-300 border border-amber-400/40">
+                                STD 1 TO 8
+                            </span>
+                        </div>
+
+                        <!-- Visual Mockup of Thakor Tuition Classes Interface -->
+                        <div class="preview-canvas p-6 bg-gradient-to-br from-[#0B132B] via-[#131f42] to-[#1C2541] text-white relative min-h-[250px] flex flex-col justify-between">
+                            <!-- Top Header -->
+                            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-7 h-7 rounded-full bg-[#FFD166] text-[#0B132B] flex items-center justify-center font-black text-xs">
+                                        <i class="fa-solid fa-book-open-reader"></i>
+                                    </div>
+                                    <span class="font-bold text-xs sm:text-sm tracking-wide text-white">Thakor Tuition Classes</span>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-full bg-[#FF4D4D] text-white text-[10px] font-bold shadow">Enroll Now</span>
+                            </div>
+
+                            <!-- Hero Banner inside Mockup -->
+                            <div class="my-3 text-center">
+                                <div class="inline-block px-3 py-0.5 rounded-full bg-[#FFD166]/20 border border-[#FFD166]/50 text-[#FFD166] text-[10px] font-bold mb-1.5">
+                                    <i class="fa-regular fa-clock mr-1"></i> 5:00 PM to 8:00 PM • Mon - Sat
+                                </div>
+                                <div class="text-lg font-extrabold text-white">Bright Future Begins Here!</div>
+                                <div class="text-[11px] text-gray-300 mt-0.5">Strong Foundation • Better Understanding • Brighter Tomorrow</div>
+                            </div>
+
+                            <!-- Subjects Pill Grid inside Mockup -->
+                            <div class="grid grid-cols-3 sm:grid-cols-6 gap-1.5 text-center">
+                                <div class="bg-white/10 border border-white/15 rounded p-1.5 text-[10px] font-semibold text-[#FFD166]">English</div>
+                                <div class="bg-white/10 border border-white/15 rounded p-1.5 text-[10px] font-semibold text-sky-300">Maths</div>
+                                <div class="bg-white/10 border border-white/15 rounded p-1.5 text-[10px] font-semibold text-emerald-300">Science</div>
+                                <div class="bg-white/10 border border-white/15 rounded p-1.5 text-[10px] font-semibold text-purple-300">Social Sci</div>
+                                <div class="bg-white/10 border border-white/15 rounded p-1.5 text-[10px] font-semibold text-rose-300">Hindi</div>
+                                <div class="bg-white/10 border border-white/15 rounded p-1.5 text-[10px] font-semibold text-amber-300">Gujarati</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Content Body -->
+                    <div class="p-8 flex-grow flex flex-col justify-between relative z-10">
+                        <div>
+                            <div class="flex items-center justify-between text-xs font-mono text-nex-secondary mb-2">
+                                <span>PROJECT // 04</span>
+                                <span>EDUCATION & LOCAL INSTITUTION PORTAL</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-display font-bold text-white mb-2 group-hover:text-nex-secondary transition-colors">
+                                Thakor Tuition Classes
+                            </h3>
+                            <p class="text-nex-secondary font-semibold text-sm tracking-wide uppercase mb-4">
+                                "Bright Future Begins Here! • STD 1 to 8 Academic Portal"
+                            </p>
+                            <p class="text-gray-300 text-base leading-relaxed mb-6">
+                                A high-conversion academic brand website engineered for Thakor Tuition Classes in Jamalpur, Ahmedabad. Showcases curriculum coverage across 6 core subjects (English, Mathematics, Science, Social Science, Hindi, Gujarati), daily batch schedules, educator contact cards, and interactive Google Maps navigation.
+                            </p>
+
+                            <!-- Key Highlights -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6 text-sm text-gray-300">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-secondary text-xs"></i>
+                                    <span>Interactive 6-Subject Curriculum Matrix</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-secondary text-xs"></i>
+                                    <span>5 Guaranteed Student Growth Pillars</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-secondary text-xs"></i>
+                                    <span>Direct Educator Connect & Enrollment CTA</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-nex-secondary text-xs"></i>
+                                    <span>Embedded Google Maps Location Pin</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <!-- Tech Stack Pills -->
+                            <div class="flex flex-wrap gap-2 mb-6 pt-4 border-t border-white/10">
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">HTML5 & CSS3</span>
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Interactive JS</span>
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Google Maps Embed</span>
+                                <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Mobile Responsive</span>
+                                <span class="px-3 py-1 rounded-md bg-nex-secondary/15 border border-nex-secondary/40 text-xs font-mono text-nex-secondary">GitHub Pages</span>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <a href="https://sahalthakor.github.io/tution/" target="_blank" rel="noopener noreferrer" class="flex-1 py-3.5 px-5 bg-nex-secondary text-white font-display font-bold text-xs md:text-sm uppercase tracking-wider rounded text-center hover:shadow-[0_0_25px_rgba(188,19,254,0.5)] transition-all btn-cyber flex items-center justify-center gap-2">
+                                    <span>Launch Live Website</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <button type="button" onclick="openProjectModal('tuition')" class="py-3.5 px-5 border border-white/20 hover:border-nex-secondary text-white hover:text-nex-secondary font-display font-bold text-xs md:text-sm uppercase tracking-wider rounded transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                                    <span>Inspect Architecture</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="py-12 border-y border-white/5 bg-nex-black/50 backdrop-blur-sm">
+    <section class="py-14 border-y border-white/10 bg-nex-black/70 backdrop-blur-md relative z-10">
         <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div class="text-center reveal">
                 <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2"><span class="counter" data-target="100">0</span>%</h3>
-                <p class="text-nex-primary uppercase tracking-widest text-sm">Optimization</p>
+                <p class="text-nex-primary uppercase tracking-widest text-xs md:text-sm font-semibold">Performance Optimization</p>
             </div>
             <div class="text-center reveal" style="transition-delay: 100ms;">
                 <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2"><span class="counter" data-target="24">0</span>/7</h3>
-                <p class="text-nex-primary uppercase tracking-widest text-sm">Digital Support</p>
+                <p class="text-nex-primary uppercase tracking-widest text-xs md:text-sm font-semibold">Digital Support</p>
             </div>
             <div class="text-center reveal" style="transition-delay: 200ms;">
                 <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2"><span class="counter" data-target="360">0</span>&deg;</h3>
-                <p class="text-nex-primary uppercase tracking-widest text-sm">Creative Vision</p>
+                <p class="text-nex-primary uppercase tracking-widest text-xs md:text-sm font-semibold">Full-Stack Vision</p>
             </div>
             <div class="text-center reveal" style="transition-delay: 300ms;">
                 <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2"><span class="counter" data-target="100">0</span>%</h3>
-                <p class="text-nex-primary uppercase tracking-widest text-sm">Secure Code</p>
+                <p class="text-nex-primary uppercase tracking-widest text-xs md:text-sm font-semibold">Pay-On-Completion Trust</p>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 relative grid-bg">
+    <section id="about" class="py-24 relative grid-bg z-10">
         <div class="container mx-auto px-6">
             <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-1/2 reveal">
+                <div class="lg:w-1/2 w-full reveal">
                     <div class="relative">
-                        <div class="absolute -inset-4 bg-gradient-to-r from-nex-primary to-nex-secondary rounded-lg opacity-30 blur-xl animate-pulse-slow"></div>
-                        <div class="relative glass-card p-8 rounded-lg border border-white/10 overflow-hidden h-96 flex items-center justify-center">
-                            <!-- Hologram Placeholder -->
-                            <div class="absolute inset-0 flex items-center justify-center opacity-20">
-                                <i class="fa-brands fa-react text-[200px] animate-spin-slow" style="animation-duration: 10s;"></i>
+                        <div class="absolute -inset-4 bg-gradient-to-r from-nex-primary to-nex-secondary rounded-2xl opacity-30 blur-xl animate-pulse-slow"></div>
+                        <div class="relative glass-card p-8 rounded-2xl border border-white/10 overflow-hidden min-h-[380px] flex flex-col justify-between">
+                            <!-- Background Spinning React Emblem -->
+                            <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+                                <i class="fa-brands fa-react text-[240px] text-nex-primary animate-spin-slow"></i>
                             </div>
-                            <div class="z-10 text-center">
+
+                            <div class="flex items-center justify-between border-b border-white/10 pb-4 relative z-10">
+                                <span class="font-mono text-xs text-nex-primary uppercase tracking-widest">// NEXVOLT CORE ENGINE</span>
+                                <span class="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-mono text-xs">v2025.4</span>
+                            </div>
+
+                            <div class="my-auto py-6 text-center relative z-10">
                                 <i class="fa-solid fa-code-branch text-6xl text-nex-primary mb-4 animate-float"></i>
-                                <h3 class="font-display text-2xl">Modern Tech Stack</h3>
+                                <h3 class="font-display text-2xl md:text-3xl font-bold text-white mb-2">Modern Full-Stack Architecture</h3>
+                                <p class="text-gray-400 text-sm max-w-md mx-auto">
+                                    From React, Next.js, and React Native Expo to Node.js, tRPC, and MongoDB—we engineer systems built for zero-latency scale.
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-3 pt-4 border-t border-white/10 text-center font-mono text-xs relative z-10">
+                                <div class="p-2 rounded bg-white/5">
+                                    <div class="text-nex-primary font-bold">FRONTEND</div>
+                                    <div class="text-gray-400 text-[11px]">React / Next / Expo</div>
+                                </div>
+                                <div class="p-2 rounded bg-white/5">
+                                    <div class="text-nex-secondary font-bold">BACKEND</div>
+                                    <div class="text-gray-400 text-[11px]">Node / tRPC / Express</div>
+                                </div>
+                                <div class="p-2 rounded bg-white/5">
+                                    <div class="text-emerald-400 font-bold">DATA & AI</div>
+                                    <div class="text-gray-400 text-[11px]">MongoDB / Drizzle</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -373,18 +1173,21 @@
                 <div class="lg:w-1/2 reveal">
                     <h2 class="text-nex-primary font-display font-bold tracking-widest uppercase mb-4 text-sm">Our Expertise</h2>
                     <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">Redefining the <span class="text-nex-secondary">Digital Experience</span>.</h3>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                        Standard websites are obsolete. At NexVolt, we don't just build pages; we engineer interactive ecosystems. From high-speed Single Page Applications (SPAs) to immersive WebGL environments, we push the browser to its limit.
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        Standard websites are obsolete. At NexVolt Technologies, we don't just build pages; we engineer interactive ecosystems. From cloud-based Educational ERPs (<a href="https://sahalthakor.github.io/ERP/" target="_blank" rel="noopener noreferrer" class="text-nex-primary underline decoration-nex-primary/40 hover:decoration-nex-primary">EduCore Ultimate</a>) and AI career platforms (<a href="https://ai-job-hunter-tau.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-nex-secondary underline decoration-nex-secondary/40 hover:decoration-nex-secondary">AI Job Hunter</a>) to full-stack mobile monorepos (<a href="https://github.com/sahalthakor/-feedants" target="_blank" rel="noopener noreferrer" class="text-nex-primary underline decoration-nex-primary/40 hover:decoration-nex-primary">Feedants</a>), we push modern web architecture to its limit.
                     </p>
                     <ul class="space-y-4">
-                        <li class="flex items-center text-gray-300">
-                            <i class="fa-solid fa-check-circle text-nex-primary mr-3"></i> Full-Stack Solutions (MERN, Next.js)
+                        <li class="flex items-center text-gray-200 text-lg">
+                            <i class="fa-solid fa-circle-check text-nex-primary mr-3"></i> Full-Stack & Cross-Platform Solutions (MERN, Next.js, React Native, tRPC)
                         </li>
-                        <li class="flex items-center text-gray-300">
-                            <i class="fa-solid fa-check-circle text-nex-primary mr-3"></i> 3D Web & Interactive Canvas
+                        <li class="flex items-center text-gray-200 text-lg">
+                            <i class="fa-solid fa-circle-check text-nex-primary mr-3"></i> Custom SaaS, ERP Dashboards & AI-Powered Workflows
                         </li>
-                        <li class="flex items-center text-gray-300">
-                            <i class="fa-solid fa-check-circle text-nex-primary mr-3"></i> Enterprise-Grade Security & SEO
+                        <li class="flex items-center text-gray-200 text-lg">
+                            <i class="fa-solid fa-circle-check text-nex-primary mr-3"></i> 3D WebGL Environments, Interactive Canvas & High-Conversion UI
+                        </li>
+                        <li class="flex items-center text-gray-200 text-lg">
+                            <i class="fa-solid fa-circle-check text-nex-primary mr-3"></i> Enterprise-Grade Security, Type-Safe APIs & Technical SEO
                         </li>
                     </ul>
                 </div>
@@ -392,97 +1195,101 @@
         </div>
     </section>
 
-    <!-- Solutions Section -->
-    <section id="solutions" class="py-24 bg-nex-dark relative">
+    <!-- Solutions / Services Section -->
+    <section id="solutions" class="py-24 bg-nex-dark relative z-10">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-4xl md:text-6xl font-display font-bold text-white mb-4">Development <span class="text-transparent bg-clip-text bg-gradient-to-r from-nex-primary to-nex-secondary">Services</span></h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Cutting-edge web solutions tailored for speed, aesthetics, and conversion.</p>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">Cutting-edge web and software solutions tailored for speed, aesthetics, and measurable business growth.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1 -->
                 <div class="glass-card p-8 rounded-xl relative group reveal">
-                    <div class="absolute top-0 right-0 p-4 opacity-50 text-4xl text-white/5 font-display font-black">01</div>
+                    <div class="absolute top-0 right-0 p-4 opacity-50 text-4xl text-white/10 font-display font-black">01</div>
                     <div class="w-16 h-16 rounded-full bg-nex-primary/10 flex items-center justify-center mb-6 group-hover:bg-nex-primary/20 transition-colors">
                         <i class="fa-solid fa-laptop-code text-2xl text-nex-primary"></i>
                     </div>
-                    <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-nex-primary transition-colors">Custom Web Apps</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Bespoke web applications built on React and Vue.js that perform like native software. Fast, responsive, and robust.
+                    <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-nex-primary transition-colors">Custom Web & SaaS Apps</h3>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        Bespoke web applications, ERP portals, and SaaS platforms built on React, TypeScript, and modern cloud stacks that perform like native software.
                     </p>
                 </div>
 
                 <!-- Card 2 -->
                 <div class="glass-card p-8 rounded-xl relative group reveal" style="transition-delay: 100ms;">
-                    <div class="absolute top-0 right-0 p-4 opacity-50 text-4xl text-white/5 font-display font-black">02</div>
+                    <div class="absolute top-0 right-0 p-4 opacity-50 text-4xl text-white/10 font-display font-black">02</div>
                     <div class="w-16 h-16 rounded-full bg-nex-secondary/10 flex items-center justify-center mb-6 group-hover:bg-nex-secondary/20 transition-colors">
                         <i class="fa-solid fa-cube text-2xl text-nex-secondary"></i>
                     </div>
-                    <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-nex-secondary transition-colors">Immersive 3D</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Three.js and WebGL integration to create stunning 3D portfolios and product showcases that captivate users.
+                    <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-nex-secondary transition-colors">Immersive 3D & Interactive UI</h3>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        Three.js, interactive HTML5 canvas, and custom animations that transform brand websites and product showcases into unforgettable digital experiences.
                     </p>
                 </div>
 
                 <!-- Card 3 -->
                 <div class="glass-card p-8 rounded-xl relative group reveal" style="transition-delay: 200ms;">
-                    <div class="absolute top-0 right-0 p-4 opacity-50 text-4xl text-white/5 font-display font-black">03</div>
+                    <div class="absolute top-0 right-0 p-4 opacity-50 text-4xl text-white/10 font-display font-black">03</div>
                     <div class="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
                         <i class="fa-solid fa-database text-2xl text-blue-400"></i>
                     </div>
-                    <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">Backend Systems</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Secure APIs, database management, and cloud architecture to ensure your data is always available and protected.
+                    <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">Full-Stack & Backend Systems</h3>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        Type-safe APIs (Node.js, Express, tRPC), MongoDB & relational databases, authentication portals, and cloud architecture built for reliability.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section (REVISED for Complexity) -->
-    <section id="pricing" class="py-24 relative grid-bg">
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 relative grid-bg z-10">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-4xl md:text-6xl font-display font-bold text-white mb-4">Adaptive <span class="text-transparent bg-clip-text bg-gradient-to-r from-nex-primary to-nex-secondary">Pricing</span></h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">We don't sell generic boxes. We build custom engines. Cost scales directly with complexity, interactivity, and intelligence.</p>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">We don't sell generic boxes. We build custom engines. Cost scales directly with complexity, interactivity, and intelligence.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Tier 1 -->
                 <div class="glass-card p-8 rounded-xl relative group reveal flex flex-col pricing-card">
-                    <h3 class="text-xl font-display font-bold text-gray-300 mb-2">Level 1: Core</h3>
+                    <h3 class="text-xl font-display font-bold text-gray-200 mb-2">Level 1: Core</h3>
                     <div class="text-xl font-body text-nex-primary mb-6">Starting Baseline</div>
-                    <p class="text-gray-400 text-sm mb-6 flex-grow">Essential, high-performance architecture. Best for brands needing a fast, secure, and beautiful digital presence.</p>
+                    <p class="text-gray-400 text-sm mb-6 flex-grow">Essential, high-performance architecture. Best for institutions and brands needing a fast, secure, and beautiful digital presence (similar to <span class="text-white">Thakor Tuition Classes</span>).</p>
 
                     <ul class="space-y-3 mb-8 text-sm text-gray-300">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> Responsive Static UI</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> SEO Optimization</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> Fast Loading Speed</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> Responsive Custom UI</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> SEO & Maps Integration</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> Ultra-Fast Loading Speed</li>
                     </ul>
 
                     <div class="mt-auto border-t border-white/10 pt-4">
                         <p class="text-xs text-gray-500 mb-2">Cost Factor: Low</p>
-                        <a href="#contact" class="w-full block py-3 border border-gray-600 hover:border-nex-primary text-center text-white font-bold uppercase text-sm hover:bg-nex-primary hover:text-black transition-all">Request Quote</a>
+                        <button type="button" onclick="selectTier('Level 1: Core (Brand / Institutional Website)')" class="w-full block py-3 border border-gray-600 hover:border-nex-primary text-center text-white font-bold uppercase text-sm hover:bg-nex-primary hover:text-black transition-all rounded">
+                            Select Level 1 Quote
+                        </button>
                     </div>
                 </div>
 
                 <!-- Tier 2 -->
                 <div class="glass-card p-8 rounded-xl relative group reveal flex flex-col pricing-card popular transform md:-translate-y-4 bg-gradient-to-b from-nex-secondary/10 to-transparent">
-                    <div class="absolute top-0 right-0 bg-nex-secondary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">ADVANCED</div>
+                    <div class="absolute top-0 right-0 bg-nex-secondary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">MOST POPULAR</div>
                     <h3 class="text-xl font-display font-bold text-nex-secondary mb-2">Level 2: Dynamic</h3>
                     <div class="text-xl font-body text-nex-secondary mb-6">Interactive Scale</div>
-                    <p class="text-gray-400 text-sm mb-6 flex-grow">Data-driven applications with Content Management Systems (CMS) and fluid user interactions.</p>
+                    <p class="text-gray-400 text-sm mb-6 flex-grow">Data-driven applications with portals, analytics, and fluid user interactions (similar to <span class="text-white">EduCore Ultimate ERP</span>).</p>
 
                     <ul class="space-y-3 mb-8 text-sm text-gray-300">
                         <li class="flex items-center"><i class="fa-solid fa-check text-nex-secondary mr-2"></i> CMS / Database Integration</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-secondary mr-2"></i> User Logins & Dashboards</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-secondary mr-2"></i> Advanced Animations</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-secondary mr-2"></i> Admin & User Portals / Dashboards</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-secondary mr-2"></i> Automated Receipts & Analytics</li>
                     </ul>
 
                     <div class="mt-auto border-t border-white/10 pt-4">
                         <p class="text-xs text-gray-500 mb-2">Cost Factor: Medium</p>
-                        <a href="#contact" class="w-full block py-3 bg-nex-secondary text-center text-white font-bold uppercase text-sm hover:shadow-[0_0_20px_rgba(188,19,254,0.5)] transition-all">Request Quote</a>
+                        <button type="button" onclick="selectTier('Level 2: Dynamic (ERP / Portal / Web App)')" class="w-full block py-3 bg-nex-secondary text-center text-white font-bold uppercase text-sm hover:shadow-[0_0_20px_rgba(188,19,254,0.5)] transition-all rounded">
+                            Select Level 2 Quote
+                        </button>
                     </div>
                 </div>
 
@@ -490,17 +1297,19 @@
                 <div class="glass-card p-8 rounded-xl relative group reveal flex flex-col pricing-card">
                     <h3 class="text-xl font-display font-bold text-nex-primary mb-2">Level 3: Futuristic</h3>
                     <div class="text-xl font-body text-nex-primary mb-6">Immersive Scale</div>
-                    <p class="text-gray-400 text-sm mb-6 flex-grow">The bleeding edge. 3D WebGL environments, AI-powered logic, and complex SaaS infrastructure.</p>
+                    <p class="text-gray-400 text-sm mb-6 flex-grow">The bleeding edge. Full-stack monorepos, cross-platform mobile apps, AI-powered workflows, and 3D WebGL (similar to <span class="text-white">AI Job Hunter</span> & <span class="text-white">Feedants</span>).</p>
 
                     <ul class="space-y-3 mb-8 text-sm text-gray-300">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> 3D / WebGL Experience</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> AI & Machine Learning</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> Complex Enterprise Logic</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> Full-Stack Web + Mobile (React Native/tRPC)</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> AI & Machine Learning Integration</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-nex-primary mr-2"></i> 3D WebGL & Complex Enterprise Logic</li>
                     </ul>
 
                     <div class="mt-auto border-t border-white/10 pt-4">
                         <p class="text-xs text-gray-500 mb-2">Cost Factor: High</p>
-                        <a href="#contact" class="w-full block py-3 border border-gray-600 hover:border-nex-primary text-center text-white font-bold uppercase text-sm hover:bg-nex-primary hover:text-black transition-all">Request Quote</a>
+                        <button type="button" onclick="selectTier('Level 3: Futuristic (AI SaaS / Full-Stack Monorepo / 3D)')" class="w-full block py-3 border border-gray-600 hover:border-nex-primary text-center text-white font-bold uppercase text-sm hover:bg-nex-primary hover:text-black transition-all rounded">
+                            Select Level 3 Quote
+                        </button>
                     </div>
                 </div>
             </div>
@@ -508,94 +1317,137 @@
     </section>
 
     <!-- Innovation / Parallax Section - Attraction CTA -->
-    <section id="innovation" class="py-32 relative overflow-hidden flex items-center justify-center">
-        <!-- Background decorative elements -->
+    <section id="innovation" class="py-28 relative overflow-hidden flex items-center justify-center z-10">
         <div class="absolute inset-0 bg-nex-black">
-            <div class="absolute top-0 left-0 w-full h-full opacity-20" style="background: radial-gradient(circle at 50% 50%, #00f2ff 0%, transparent 50%);"></div>
+            <div class="absolute top-0 left-0 w-full h-full opacity-20" style="background: radial-gradient(circle at 50% 50%, #00f2ff 0%, transparent 55%);"></div>
         </div>
 
         <div class="container mx-auto px-6 relative z-10">
             <div class="glass-panel rounded-2xl p-8 md:p-16 border border-white/10 text-center max-w-4xl mx-auto reveal">
-                <i class="fa-solid fa-rocket text-6xl text-white/80 mb-6 animate-pulse"></i>
+                <i class="fa-solid fa-rocket text-6xl text-nex-primary mb-6 animate-float"></i>
                 <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6">Launch Your <span class="text-nex-primary">Vision</span></h2>
-                <p class="text-lg text-gray-300 mb-10">
+                <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
                     Your website is your digital headquarters. Don't settle for templates. We build custom-coded solutions that scale with your business and impress your clients.
                 </p>
-                <!-- Attraction CTA -->
-                <button class="px-10 py-4 bg-transparent border border-nex-primary text-white font-display font-bold uppercase tracking-widest hover:bg-nex-primary hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(0,242,255,0.2)]">
+                <a href="#contact" class="inline-block px-10 py-4 bg-transparent border border-nex-primary text-white font-display font-bold uppercase tracking-widest hover:bg-nex-primary hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(0,242,255,0.2)] rounded">
                     Claim Free Consultation
-                </button>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 relative grid-bg">
+    <!-- Contact Section with Interactive Project Brief Generator -->
+    <section id="contact" class="py-24 relative grid-bg z-10">
         <div class="container mx-auto px-6 max-w-5xl">
             <div class="glass-card rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row reveal">
 
                 <!-- Info Side -->
-                <div class="md:w-5/12 bg-nex-dark p-10 flex flex-col justify-between border-r border-white/5 relative overflow-hidden">
+                <div class="md:w-5/12 bg-nex-dark p-10 flex flex-col justify-between border-r border-white/10 relative overflow-hidden">
                     <div class="absolute inset-0 bg-gradient-to-br from-nex-primary/10 to-nex-secondary/10 z-0"></div>
                     <div class="relative z-10">
-                        <h3 class="text-3xl font-display font-bold text-white mb-6">Connect With Us</h3>
-                        <p class="text-gray-400 mb-8">Ready to upgrade your digital presence? Reach out directly for a consultation.</p>
+                        <div class="inline-block px-3 py-1 rounded bg-nex-primary/10 border border-nex-primary/30 text-nex-primary font-mono text-xs uppercase mb-4">
+                            Direct Uplink
+                        </div>
+                        <h3 class="text-3xl font-display font-bold text-white mb-4">Connect With Us</h3>
+                        <p class="text-gray-400 mb-8">Ready to upgrade your digital presence? Configure your project brief or reach out directly for a consultation.</p>
 
                         <div class="space-y-6">
                             <div class="flex items-start">
-                                <i class="fa-solid fa-globe text-nex-primary mt-1 mr-4"></i>
+                                <div class="w-10 h-10 rounded-lg bg-nex-primary/10 border border-nex-primary/30 flex items-center justify-center mr-4 shrink-0">
+                                    <i class="fa-solid fa-location-dot text-nex-primary"></i>
+                                </div>
                                 <div>
                                     <h4 class="text-white font-bold">Global HQ</h4>
-                                    <p class="text-gray-400 text-sm"><br>ANAND,GUJARAT</p>
+                                    <p class="text-gray-400 text-sm">Anand, Gujarat, India</p>
                                 </div>
                             </div>
                             <div class="flex items-start">
-                                <i class="fa-solid fa-envelope text-nex-primary mt-1 mr-4"></i>
+                                <div class="w-10 h-10 rounded-lg bg-nex-primary/10 border border-nex-primary/30 flex items-center justify-center mr-4 shrink-0">
+                                    <i class="fa-solid fa-envelope text-nex-primary"></i>
+                                </div>
                                 <div>
                                     <h4 class="text-white font-bold">Email Uplink</h4>
-                                    <p class="text-gray-400 text-sm">sahalthakor440@gmail.com</p>
+                                    <p class="text-gray-300 text-sm font-mono break-all">sahalthakor440@gmail.com</p>
+                                    <button type="button" id="copy-email-btn" onclick="copyEmail()" class="mt-1.5 text-xs font-mono text-nex-primary hover:text-white flex items-center gap-1.5 transition-colors">
+                                        <i class="fa-regular fa-copy"></i> <span id="copy-email-text">Copy email address</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="relative z-10 mt-12 flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-nex-primary hover:text-black hover:border-nex-primary transition-all"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-nex-primary hover:text-black hover:border-nex-primary transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-nex-primary hover:text-black hover:border-nex-primary transition-all"><i class="fa-brands fa-github"></i></a>
+                    <div class="relative z-10 mt-12 pt-6 border-t border-white/10">
+                        <p class="text-xs font-mono uppercase tracking-widest text-gray-400 mb-3">Developer & Studio Links</p>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/sahalthakor" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-nex-primary hover:text-black hover:border-nex-primary transition-all">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="https://sahalthakor.github.io/ERP/" target="_blank" rel="noopener noreferrer" aria-label="EduCore ERP" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-nex-primary hover:text-black hover:border-nex-primary transition-all" title="EduCore Ultimate ERP">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </a>
+                            <a href="https://ai-job-hunter-tau.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="AI Job Hunter" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-nex-primary hover:text-black hover:border-nex-primary transition-all" title="AI Job Hunter">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </a>
+                            <a href="mailto:sahalthakor440@gmail.com" aria-label="Email" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-nex-primary hover:text-black hover:border-nex-primary transition-all">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Direct Action Side (Replaces Form) -->
-                <div class="md:w-7/12 p-10 bg-nex-black/80 flex flex-col justify-center items-center text-center">
-                    <i class="fa-solid fa-paper-plane text-5xl text-nex-secondary mb-6 animate-float"></i>
-                    <h3 class="text-2xl font-display font-bold text-white mb-4">Initialize Communication</h3>
-
-                    <div class="mb-6 p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
-                        <p class="text-green-400 text-sm font-bold"><i class="fa-solid fa-lock mr-2"></i> Payment only upon 100% completion</p>
+                <!-- Interactive Project Brief & Direct Email Action Side -->
+                <div class="md:w-7/12 p-8 md:p-10 bg-nex-black/85 flex flex-col justify-center">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-display font-bold text-white">Initialize Communication</h3>
+                        <i class="fa-solid fa-paper-plane text-2xl text-nex-secondary animate-float"></i>
                     </div>
 
-                    <p class="text-gray-400 mb-8 max-w-sm">
-                        Click below to open your secure email client and send us your project requirements directly.
-                    </p>
+                    <div class="mb-6 p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg flex items-center gap-2.5">
+                        <i class="fa-solid fa-lock text-emerald-400"></i>
+                        <p class="text-emerald-400 text-xs md:text-sm font-bold">Trust Protocol: Payment only upon 100% project completion</p>
+                    </div>
 
-                    <a href="mailto:sahalthakor440@gmail.com?subject=Project Inquiry for NexVolt&body=Hello NexVolt Team,%0D%0A%0D%0AI am interested in your web development services. Here are my project details:" class="w-full md:w-auto px-10 py-5 bg-gradient-to-r from-nex-primary to-nex-secondary text-white font-display font-bold uppercase tracking-widest hover:shadow-[0_0_30px_rgba(188,19,254,0.5)] transition-all duration-300 rounded-lg transform hover:scale-105">
-                        <i class="fa-solid fa-envelope-open-text mr-2"></i> Send Email
+                    <!-- Interactive Brief Customizer -->
+                    <div class="space-y-4 mb-6 text-left">
+                        <div>
+                            <label for="brief-tier" class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-1.5">Selected Architecture Tier</label>
+                            <select id="brief-tier" onchange="updateMailtoLink()" class="w-full px-4 py-2.5 rounded-lg bg-nex-dark border border-white/15 text-white text-sm focus:border-nex-primary focus:outline-none">
+                                <option value="Level 2: Dynamic (ERP / Portal / Web App)">Level 2: Dynamic (ERP / Portal / Web App)</option>
+                                <option value="Level 1: Core (Brand / Institutional Website)">Level 1: Core (Brand / Institutional Website)</option>
+                                <option value="Level 3: Futuristic (AI SaaS / Full-Stack Monorepo / 3D)">Level 3: Futuristic (AI SaaS / Full-Stack Monorepo / 3D)</option>
+                                <option value="Custom Enterprise Architecture">Custom Enterprise Architecture</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="brief-notes" class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-1.5">Project Vision / Key Requirements (Optional)</label>
+                            <textarea id="brief-notes" rows="3" oninput="updateMailtoLink()" placeholder="E.g., We need an ERP dashboard like EduCore or an AI platform like AI Job Hunter..." class="w-full px-4 py-2.5 rounded-lg bg-nex-dark border border-white/15 text-white text-sm focus:border-nex-primary focus:outline-none resize-none"></textarea>
+                        </div>
+                    </div>
+
+                    <a id="dynamic-mailto-btn" href="mailto:sahalthakor440@gmail.com?subject=Project%20Inquiry%20for%20NexVolt%20Technologies&body=Hello%20NexVolt%20Team%2C%0D%0A%0D%0AI%20am%20interested%20in%20your%20web%20development%20services.%0D%0ASelected%20Tier%3A%20Level%202%3A%20Dynamic%0D%0A%0D%0AProject%20Details%3A%0D%0A" class="w-full py-4 px-8 bg-gradient-to-r from-nex-primary to-nex-secondary text-nex-black font-display font-bold uppercase tracking-widest hover:shadow-[0_0_30px_rgba(0,242,255,0.45)] transition-all duration-300 rounded-lg text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        <span>Launch Email Client with Brief</span>
                     </a>
 
-                    <p class="mt-6 text-xs text-gray-500">Direct uplink to: sahalthakor440@gmail.com</p>
+                    <p class="mt-4 text-xs text-gray-500 text-center font-mono">Direct uplink: sahalthakor440@gmail.com</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black border-t border-white/10 pt-16 pb-8">
+    <footer class="bg-black border-t border-white/10 pt-14 pb-8 relative z-10">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-10">
-                <a href="#" class="text-2xl font-display font-bold text-white mb-4 md:mb-0">
-                    NEX<span class="text-nex-primary">VOLT</span>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+                <a href="#" class="text-2xl font-display font-bold text-white">
+                    NEX<span class="text-nex-primary">VOLT</span> <span class="text-xs font-mono text-gray-400 font-normal">TECHNOLOGIES</span>
                 </a>
+                <div class="flex flex-wrap justify-center gap-6 text-xs font-mono uppercase tracking-wider text-gray-400">
+                    <a href="https://sahalthakor.github.io/ERP/" target="_blank" rel="noopener noreferrer" class="hover:text-nex-primary transition-colors">EduCore ERP</a>
+                    <a href="https://ai-job-hunter-tau.vercel.app/" target="_blank" rel="noopener noreferrer" class="hover:text-nex-primary transition-colors">AI Job Hunter</a>
+                    <a href="https://github.com/sahalthakor/-feedants" target="_blank" rel="noopener noreferrer" class="hover:text-nex-primary transition-colors">Feedants Monorepo</a>
+                    <a href="https://sahalthakor.github.io/tution/" target="_blank" rel="noopener noreferrer" class="hover:text-nex-primary transition-colors">Thakor Tuition</a>
+                </div>
                 <div class="text-gray-500 text-sm">
                     &copy; 2025 NexVolt Technologies. All Rights Reserved.
                 </div>
@@ -603,23 +1455,298 @@
         </div>
     </footer>
 
+    <!-- ===================================================================== -->
+    <!-- INTERACTIVE ARCHITECTURE INSPECTOR MODAL                              -->
+    <!-- ===================================================================== -->
+    <div id="project-modal" class="fixed inset-0 z-[90] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden-modal">
+        <div class="glass-panel border border-nex-primary/40 rounded-2xl max-w-3xl w-full overflow-hidden shadow-[0_0_60px_rgba(0,242,255,0.2)]">
+            <!-- Modal Header -->
+            <div class="px-6 py-4 bg-nex-dark border-b border-white/10 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-nex-primary animate-pulse"></span>
+                    <span id="modal-code" class="font-mono text-xs text-nex-primary uppercase tracking-widest">PROJECT TELEMETRY</span>
+                </div>
+                <button type="button" onclick="closeProjectModal()" aria-label="Close modal" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/15 text-gray-300 hover:text-white flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 md:p-8 max-h-[80vh] overflow-y-auto space-y-6">
+                <div>
+                    <h3 id="modal-title" class="text-2xl md:text-3xl font-display font-bold text-white mb-1"></h3>
+                    <p id="modal-tagline" class="text-sm font-mono text-nex-primary"></p>
+                </div>
+
+                <p id="modal-description" class="text-gray-300 text-base leading-relaxed"></p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                        <div class="text-xs font-mono text-nex-primary uppercase tracking-wider mb-3">Key System Capabilities</div>
+                        <ul id="modal-features" class="space-y-2 text-sm text-gray-300"></ul>
+                    </div>
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                        <div class="text-xs font-mono text-nex-secondary uppercase tracking-wider mb-3">Architecture & Tech Stack</div>
+                        <div id="modal-stack" class="flex flex-wrap gap-2"></div>
+                        <div class="mt-4 pt-3 border-t border-white/10">
+                            <div class="text-xs font-mono text-gray-400">Production Endpoint:</div>
+                            <a id="modal-url-text" href="#" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-nex-primary hover:underline break-all"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer Actions -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <a id="modal-launch-btn" href="#" target="_blank" rel="noopener noreferrer" class="flex-1 py-3.5 px-6 bg-nex-primary text-nex-black font-display font-bold text-sm uppercase tracking-wider rounded text-center hover:shadow-[0_0_25px_rgba(0,242,255,0.5)] transition-all flex items-center justify-center gap-2">
+                        <span>Open Live Project</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <button type="button" onclick="closeProjectModal()" class="py-3.5 px-6 border border-white/20 hover:border-white text-gray-300 hover:text-white font-display font-bold text-sm uppercase tracking-wider rounded transition-all">
+                        Close Inspector
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // --- 0. Loader Logic ---
+        // --- 0. Fast Preloader Logic ---
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const loader = document.getElementById('loader');
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 700);
-            }, 2000); // 2 seconds delay
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 500);
+                }
+            }, 800);
         });
 
-        // --- 1. Dynamic Hero Text Rotation ---
+        // --- 1. Scroll Progress Bar & Cursor Glow ---
+        const scrollProgress = document.getElementById('scroll-progress');
+        const cursorGlow = document.getElementById('cursor-glow');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            if (scrollProgress) {
+                scrollProgress.style.width = `${progress}%`;
+            }
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (cursorGlow) {
+                cursorGlow.style.left = `${e.clientX}px`;
+                cursorGlow.style.top = `${e.clientY}px`;
+            }
+        });
+
+        // --- 2. 3D Perspective Tilt & Spotlight on Project Cards ---
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+
+                if (window.innerWidth >= 1024) {
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -2.5;
+                    const rotateY = ((x - centerX) / centerX) * 2.5;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // --- 3. Interactive Project Category Filter ---
+        const filterButtons = document.querySelectorAll('#project-filters .filter-btn');
+        const projectCards = document.querySelectorAll('#projects-grid .project-card');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+                projectCards.forEach(card => {
+                    const categories = card.getAttribute('data-category') || '';
+                    if (filter === 'all' || categories.includes(filter)) {
+                        card.style.display = 'flex';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                        }, 20);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // --- 4. Project Architecture Modal Data & Handlers ---
+        const projectData = {
+            educore: {
+                code: 'PROJECT // 01 — ENTERPRISE EDUCATIONAL ERP',
+                title: 'EduCore Ultimate (V6.1)',
+                tagline: 'The Operating System for Modern Education',
+                description: 'EduCore Ultimate (V6.1) unifies student administration, institutional finance, attendance tracking, and digital learning resources into a single zero-setup web platform. Designed for rapid institutional onboarding with separate administrative and student portal workflows.',
+                features: [
+                    'Real-time financial and academic analytics dashboard',
+                    'Automated student login generation, fee receipts, and academic reports',
+                    'Dedicated Create Institute onboarding and Student Portal entry points',
+                    'Mobile-first responsive interface optimized for tablets, phones, and desktops'
+                ],
+                stack: ['Educational ERP', 'JavaScript ES6+', 'HTML5 / CSS3', 'Analytics Engine', 'Automated Workflows', 'GitHub Pages'],
+                url: 'https://sahalthakor.github.io/ERP/'
+            },
+            aijob: {
+                code: 'PROJECT // 02 — AI CAREER INTELLIGENCE SAAS',
+                title: 'AI Job Hunter',
+                tagline: 'Career Intelligence Platform — Intelligent Career Discovery',
+                description: 'AI Job Hunter is a cloud-hosted career intelligence platform deployed on Vercel. It combines secure candidate authentication with protected, account-isolated resume storage and AI-assisted job discovery workflows.',
+                features: [
+                    'Tabbed Sign-In and Account Creation authentication portal',
+                    'Strict resume data privacy assurance isolated to each user account',
+                    'AI-powered job search and intelligent role discovery workflow',
+                    'Low-latency global edge deployment via Vercel Cloud'
+                ],
+                stack: ['AI Career Platform', 'Modern Web App', 'User Authentication', 'Encrypted Resume Vault', 'Vercel Deployment'],
+                url: 'https://ai-job-hunter-tau.vercel.app/'
+            },
+            feedants: {
+                code: 'PROJECT // 03 — FULL-STACK & MOBILE MONOREPO',
+                title: 'Feedants Competition Details Engine',
+                tagline: 'Full-Stack React Native, Expo, Node.js, tRPC & MongoDB Architecture',
+                description: 'Built as a comprehensive full-stack monorepo (client/, mobile/, server/, shared/, drizzle/), this architecture implements the complete Feedants Competition Details experience—handling registration, live participant capacity, countdown timers, submissions, judging criteria, rewards, and lifecycle state transitions.',
+                features: [
+                    'Monorepo architecture spanning web client, Expo mobile app, and backend server',
+                    'End-to-end type-safe API communication powered by tRPC and TypeScript (89.9%)',
+                    'MongoDB persistence with database abstraction and fallback resilience',
+                    'Full competition lifecycle: registration, capacity tracking, countdowns, and judging'
+                ],
+                stack: ['TypeScript (89.9%)', 'React Native', 'Expo Router', 'Node.js & Express', 'tRPC', 'MongoDB', 'Drizzle', 'pnpm'],
+                url: 'https://github.com/sahalthakor/-feedants'
+            },
+            tuition: {
+                code: 'PROJECT // 04 — ACADEMIC BRAND & ENROLLMENT PORTAL',
+                title: 'Thakor Tuition Classes',
+                tagline: 'Bright Future Begins Here! • Standard 1 to 8 Academic Portal',
+                description: 'A vibrant, parent- and student-friendly educational portal built for Thakor Tuition Classes in Jamalpur, Ahmedabad. Designed to showcase curriculum offerings for Standards 1 to 8, highlight daily batch timings (5:00 PM – 8:00 PM, Mon–Sat), and enable instant enrollment inquiries.',
+                features: [
+                    'Complete curriculum showcase across English, Maths, Science, Social Science, Hindi & Gujarati',
+                    '5 Guaranteed Improvement pillars: Homework Help, Basics, Exam Prep, Development & Confidence',
+                    'Direct contact cards for educators Mehjabin Thakor & Miskat Thakor',
+                    'Embedded interactive Google Map for Jamalpur, Ahmedabad campus navigation'
+                ],
+                stack: ['HTML5', 'Modern CSS3', 'Vanilla JavaScript', 'Font Awesome Icons', 'Google Maps Embed', 'GitHub Pages'],
+                url: 'https://sahalthakor.github.io/tution/'
+            }
+        };
+
+        function openProjectModal(key) {
+            const data = projectData[key];
+            if (!data) return;
+
+            document.getElementById('modal-code').textContent = data.code;
+            document.getElementById('modal-title').textContent = data.title;
+            document.getElementById('modal-tagline').textContent = data.tagline;
+            document.getElementById('modal-description').textContent = data.description;
+
+            const featuresList = document.getElementById('modal-features');
+            featuresList.innerHTML = data.features.map(f =>
+                `<li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-nex-primary mt-1 text-xs"></i><span>${f}</span></li>`
+            ).join('');
+
+            const stackContainer = document.getElementById('modal-stack');
+            stackContainer.innerHTML = data.stack.map(s =>
+                `<span class="px-2.5 py-1 rounded bg-white/10 border border-white/15 text-xs font-mono text-white">${s}</span>`
+            ).join('');
+
+            const urlText = document.getElementById('modal-url-text');
+            urlText.textContent = data.url;
+            urlText.href = data.url;
+
+            const launchBtn = document.getElementById('modal-launch-btn');
+            launchBtn.href = data.url;
+
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('hidden-modal');
+            modal.classList.add('visible-modal');
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('visible-modal');
+            modal.classList.add('hidden-modal');
+        }
+
+        document.getElementById('project-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'project-modal') {
+                closeProjectModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeProjectModal();
+        });
+
+        // --- 5. Interactive Quote Tier Selector & Mailto Builder ---
+        function selectTier(tierName) {
+            const selectEl = document.getElementById('brief-tier');
+            if (selectEl) {
+                selectEl.value = tierName;
+                updateMailtoLink();
+            }
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function updateMailtoLink() {
+            const tier = document.getElementById('brief-tier')?.value || 'Level 2: Dynamic';
+            const notes = document.getElementById('brief-notes')?.value || '';
+            const subject = encodeURIComponent(`Project Inquiry for NexVolt Technologies (${tier.split('(')[0].trim()})`);
+            const bodyLines = [
+                'Hello NexVolt Team,',
+                '',
+                'I am interested in your web development services.',
+                `Selected Tier: ${tier}`,
+                '',
+                'Project Details / Requirements:',
+                notes ? notes : '[Please share your timeline and project goals]'
+            ];
+            const body = encodeURIComponent(bodyLines.join('\r\n'));
+            const btn = document.getElementById('dynamic-mailto-btn');
+            if (btn) {
+                btn.href = `mailto:sahalthakor440@gmail.com?subject=${subject}&body=${body}`;
+            }
+        }
+
+        function copyEmail() {
+            navigator.clipboard.writeText('sahalthakor440@gmail.com').then(() => {
+                const textEl = document.getElementById('copy-email-text');
+                if (textEl) {
+                    textEl.textContent = 'Copied to clipboard!';
+                    setTimeout(() => {
+                        textEl.textContent = 'Copy email address';
+                    }, 2500);
+                }
+            });
+        }
+
+        // --- 6. Dynamic Hero Text Rotation ---
         const heroQuotes = [
             "FORGING DIGITAL REALITIES",
             "NEXT-GEN WEB ARCHITECTURE",
-            "IMMERSIVE CYBER-SPACES",
+            "ENTERPRISE ERP & AI SAAS",
             "FUTURE-PROOF DEVELOPMENT"
         ];
 
@@ -627,40 +1754,30 @@
         const heroHeadline = document.getElementById('hero-headline');
 
         setInterval(() => {
-            // Fade out
             heroHeadline.style.opacity = '0';
             heroHeadline.style.transform = 'translateY(-20px)';
             heroHeadline.style.transition = 'all 0.5s ease-in';
 
             setTimeout(() => {
-                // Change text
                 quoteIndex = (quoteIndex + 1) % heroQuotes.length;
                 heroHeadline.innerText = heroQuotes[quoteIndex];
-
-                // Fade in
                 heroHeadline.style.opacity = '1';
                 heroHeadline.style.transform = 'translateY(0)';
                 heroHeadline.style.transition = 'all 0.8s ease-out';
             }, 500);
+        }, 4000);
 
-        }, 4000); // Change every 4 seconds
-
-
-        // --- 2. Interactive Particle Network Background ---
+        // --- 7. Interactive Particle Network Background ---
         const canvas = document.getElementById('neural-canvas');
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
 
-        // Configuration
-        const particleCount = window.innerWidth < 768 ? 40 : 100; // Fewer particles on mobile
+        const particleCount = window.innerWidth < 768 ? 40 : 95;
         const connectionDistance = 150;
         const mouseDistance = 200;
 
-        let mouse = {
-            x: null,
-            y: null
-        };
+        let mouse = { x: null, y: null };
 
         window.addEventListener('mousemove', (e) => {
             mouse.x = e.x;
@@ -679,18 +1796,16 @@
                 this.vx = (Math.random() - 0.5) * 0.5;
                 this.vy = (Math.random() - 0.5) * 0.5;
                 this.size = Math.random() * 2 + 1;
-                this.color = Math.random() > 0.5 ? '#00f2ff' : '#bc13fe'; // Cyan or Purple
+                this.color = Math.random() > 0.5 ? '#00f2ff' : '#bc13fe';
             }
 
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
 
-                // Bounce off edges
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
 
-                // Mouse interaction
                 if (mouse.x != null) {
                     let dx = mouse.x - this.x;
                     let dy = mouse.y - this.y;
@@ -699,10 +1814,8 @@
                         const forceDirectionX = dx / distance;
                         const forceDirectionY = dy / distance;
                         const force = (mouseDistance - distance) / mouseDistance;
-                        const directionX = forceDirectionX * force * 2; // Repulsion strength
-                        const directionY = forceDirectionY * force * 2;
-                        this.x -= directionX;
-                        this.y -= directionY;
+                        this.x -= forceDirectionX * force * 2;
+                        this.y -= forceDirectionY * force * 2;
                     }
                 }
             }
@@ -733,7 +1846,6 @@
                 particles[i].update();
                 particles[i].draw();
 
-                // Draw connections
                 for (let j = i; j < particles.length; j++) {
                     let dx = particles[i].x - particles[j].x;
                     let dy = particles[i].y - particles[j].y;
@@ -741,7 +1853,6 @@
 
                     if (distance < connectionDistance) {
                         ctx.beginPath();
-                        // Opacity based on distance
                         let opacity = 1 - (distance / connectionDistance);
                         ctx.strokeStyle = `rgba(0, 242, 255, ${opacity * 0.2})`;
                         ctx.lineWidth = 1;
@@ -758,8 +1869,7 @@
         initCanvas();
         animateCanvas();
 
-
-        // --- 3. Scroll Animations (Intersection Observer) ---
+        // --- 8. Scroll Animations (Intersection Observer) ---
         const observerOptions = {
             threshold: 0.1,
             rootMargin: "0px 0px -50px 0px"
@@ -770,11 +1880,10 @@
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
 
-                    // Trigger number counter animation if it's a counter
                     const counters = entry.target.querySelectorAll('.counter');
                     counters.forEach(counter => {
                         const target = +counter.getAttribute('data-target');
-                        const speed = 200; // The lower the slower
+                        const speed = 200;
 
                         const updateCount = () => {
                             const count = +counter.innerText;
@@ -799,8 +1908,7 @@
             observer.observe(el);
         });
 
-
-        // --- 4. Navbar Interaction ---
+        // --- 9. Navbar Interaction ---
         const navbar = document.getElementById('navbar');
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -808,12 +1916,12 @@
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 navbar.classList.add('bg-nex-black/90', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-white/5');
-                navbar.classList.remove('py-6');
-                navbar.classList.add('py-4');
+                navbar.classList.remove('py-5');
+                navbar.classList.add('py-3.5');
             } else {
                 navbar.classList.remove('bg-nex-black/90', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-white/5');
-                navbar.classList.remove('py-4');
-                navbar.classList.add('py-6');
+                navbar.classList.remove('py-3.5');
+                navbar.classList.add('py-5');
             }
         });
 
@@ -821,7 +1929,6 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Close mobile menu on link click
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
